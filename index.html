@@ -37,9 +37,9 @@
     border: 1px solid #eef0f2;
 }
 
-.card h3 { color: #333; font-size: 1.1rem; margin: 15px 0 10px 0; width: 100%; }
+.card h3 { color: #333; font-size: 1.1rem; margin: 15px 0 10px 0; width: 100%; text-align: center; }
 
-.card ul { list-style: none; padding: 0; width: 100%; }
+.card ul { list-style: none; padding: 0; width: 100%; display: flex; flex-direction: column; align-itmes: center; }
 
 .card li { 
     margin: 2px 0; 
@@ -54,7 +54,8 @@
     font-weight: bold;
     display: inline-block; 
     width: 1em;
-    margin-left: -1em;
+    margin-left: 0;
+    text-align: center;
 }
 
 .card li:hover { color: #003057; font-weight: bold; }
@@ -101,16 +102,8 @@
         font-size: 1rem;
     }
 
-    /* 5. Center the text so it doesn't look messy on mobile */
-    .card ul {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
     .card li {
         font-size: 0.75rem;
-        text-align: center;
     }
 
     /* 6. Adjust bullet points for the centered layout */
@@ -119,7 +112,6 @@
         margin-right: 5px;
     }
 }
-
 
     </style>
 </head>
