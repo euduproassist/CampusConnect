@@ -28,3 +28,22 @@ body { font-family: 'Inter', sans-serif; background: #f4f7f6; padding: 20px; }
     justify-content: center; 
     margin-bottom: 10px; 
 }
+/* Ensure the grid fits perfectly on the screen */
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns on tablets */
+    }
+}
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr; /* Switch to 1 column on mobile */
+    }
+}
+
+/* Fix for the icon container to match the photo */
+.icon {
+    font-size: 1.5rem; /* Reduced size to look cleaner */
+    color: #003057;   /* Added color to the icon text/emoji */
+}
+
