@@ -1,5 +1,55 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #f4f7f6; padding: 20px; }
+
+.grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+
+.card { 
+    background: white; 
+    padding: 20px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+}
+
+.card h3 { color: #003057; border-bottom: 2px solid #eee; padding-bottom: 10px; width: 100%; }
+
+.card ul { list-style: none; padding: 0; width: 100%; }
+
+.card li { 
+    margin: 8px 0; 
+    font-size: 0.9rem; 
+    cursor: pointer; 
+    color: #555; 
+}
+
+.card li:hover { color: #003057; font-weight: bold; }
+
+.icon { 
+    font-size: 1.5rem; 
+    background: #eef6ff; 
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-bottom: 10px; 
+    color: #003057;
+}
+    </style>
+</head>
 <body>
     <div id="portal" class="grid">
     <div class="card">
