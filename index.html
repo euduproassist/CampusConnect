@@ -16,7 +16,19 @@
     padding-bottom: 20px;
     box-sizing: border-box;
 }
-
+        
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    z-index: 1000; /* Keeps it on top of everything */
+    background: transparent;
+}
+        
 .grid { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
