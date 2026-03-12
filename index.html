@@ -46,6 +46,15 @@
     color: #555; 
 }
 
+.card li::before {
+    content: "•";
+    color: #2172b5;
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+}
+
 .card li:hover { color: #003057; font-weight: bold; }
 
 .icon { 
@@ -62,7 +71,7 @@
         @media (max-width: 600px) {
     .grid { 
         grid-template-columns: repeat(2, 1fr); /* 2 columns on phones */
-        grid-template-rows: repeat(0, 1fr);    /* 3 rows on phones */
+        grid-template-rows: repeat(3, 1fr);    /* 3 rows on phones */
     }
 }
 
