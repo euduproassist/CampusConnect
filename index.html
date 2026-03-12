@@ -12,21 +12,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 60px;
+    padding-top: 80px;
     padding-bottom: 20px;
     box-sizing: border-box;
 }
-        
+
 .navbar {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: 10px;   
+    left: 10px;  
+    right: 10px;
     padding: 15px 20px;
     font-weight: bold;
     font-size: 1.2rem;
-    z-index: 1000; /* Keeps it on top of everything */
-    background: transparent;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.9); 
+    backdrop-filter: blur(5px);   
+    border-radius: 8px;         
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: 1px solid #eef0f2;        
 }
         
 .grid { 
