@@ -11,3 +11,20 @@ body { font-family: 'Inter', sans-serif; background: #f4f7f6; padding: 20px; }
 .card ul { list-style: none; padding: 0; }
 .card li { margin: 8px 0; font-size: 0.9rem; cursor: pointer; color: #555; }
 .card li:hover { color: #003057; font-weight: bold; }
+.card { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+}
+.icon { 
+    font-size: 2.5rem; 
+    background: #eef6ff; 
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin-bottom: 10px; 
+}
