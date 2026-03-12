@@ -1,0 +1,7 @@
+body { font-family: 'Inter', sans-serif; background: #f4f7f6; padding: 20px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.card h3 { color: #003057; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+.card ul { list-style: none; padding: 0; }
+.card li { margin: 8px 0; font-size: 0.9rem; cursor: pointer; color: #555; }
+.card li:hover { color: #003057; font-weight: bold; }
