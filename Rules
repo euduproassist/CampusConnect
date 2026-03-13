@@ -1,3 +1,7 @@
+index.html:1 Uncaught TypeError: Failed to resolve module specifier "firebase/firestore". Relative references must start with either "/", "./", or "../".
+
+
+
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
