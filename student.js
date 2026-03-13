@@ -10,7 +10,7 @@ window.submitTicket = async () => {
         const category = document.getElementById('queryType').value;
         const message = document.getElementById('desc').value;
 
-        if (!studentNum || !email || !message) {
+        if (!studentNum || !email || !message || !category || category === "Please select...") {
     alert("Please fill in all required fields.");
     loading.style.display = 'none';
     return;
@@ -58,11 +58,6 @@ window.openTicketModal = (category, options) => {
     select.innerHTML = '';
     
     // 4. Add the category as a disabled header (optional, helps UI)
-    const headerOption = document.createElement('option');
-    headerOption.text = `-- ${category} --`;
-    headerOption.disabled = true;
-    headerOption.selected = true;
-    select.add(headerOption);
     
     // 5. Loop through the array and add each option
     options.forEach(optionText => {
