@@ -47,4 +47,31 @@ window.submitTicket = async () => {
     }
 };
 
+window.openTicketModal = (category, options) => {
+    // 1. Show the modal
+    document.getElementById('ticketModal').style.display = 'flex';
+    
+    // 2. Get the select element
+    const select = document.getElementById('queryType');
+    
+    // 3. Clear existing options
+    select.innerHTML = '';
+    
+    // 4. Add the category as a disabled header (optional, helps UI)
+    const headerOption = document.createElement('option');
+    headerOption.text = `-- ${category} --`;
+    headerOption.disabled = true;
+    headerOption.selected = true;
+    select.add(headerOption);
+    
+    // 5. Loop through the array and add each option
+    options.forEach(optionText => {
+        const opt = document.createElement('option');
+        opt.value = optionText;
+        opt.innerHTML = optionText;
+        select.appendChild(opt);
+    });
+};
+
+
 
