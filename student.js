@@ -8,6 +8,10 @@ window.submitTicket = async () => {
 
     try {
         const user = auth.currentUser;
+        const studentNum = document.getElementById('studentNum').value;
+        const email = document.getElementById('emailAddr').value;
+        const category = document.getElementById('queryType').value;
+        const message = document.getElementById('desc').value;
         const file = document.getElementById('fileUpload').files[0];
         
         let fileUrl = "";
@@ -18,10 +22,10 @@ window.submitTicket = async () => {
         }
 
         await addDoc(collection(db, "supportTickets"), {
-            studentId: user.uid,
-            email: user.email,
-            category: document.getElementById('queryType').value,
-            message: document.getElementById('desc').value,
+            studentNumber: studentNum,
+            email: email,
+            category: category,
+            message: message,
             attachment: fileUrl,
             status: "Pending",
             createdAt: new Date()
