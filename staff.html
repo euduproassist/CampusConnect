@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Staff Portal</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #f4f7f6; padding: 40px; }
+        .container { background: white; padding: 30px; border-radius: 12px; border: 1px solid #eef0f2; max-width: 1000px; margin: auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        h1 { font-size: 1.5rem; color: #1a1a1a; margin-bottom: 25px; }
+        
+        .controls { display: flex; gap: 15px; margin-bottom: 20px; align-items: center; }
+        .controls select, .controls input { padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; }
+        .controls input { flex-grow: 1; }
+
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; padding: 15px; color: #666; font-size: 0.85rem; border-bottom: 2px solid #f4f4f4; }
+        td { padding: 15px; border-bottom: 1px solid #f4f4f4; font-size: 0.9rem; }
+        
+        .status-pill { padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 500; background: #eef6ff; color: #003057; }
+        #detailsPanel { margin-top: 40px; padding: 25px; border: 1px solid #eef0f2; border-radius: 8px; background: #fafafa; display: none; }
+        .action-btns { display: flex; gap: 10px; margin-top: 15px; }
+        .btn { padding: 8px 16px; border-radius: 6px; border: none; cursor: pointer; font-weight: 500; }
+        .btn-blue { background: #3b82f6; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Staff Portal</h1>
+        <div class="controls">
+            <select><option>Filter: Pending</option></select>
+            <select><option>Sort: Newest</option></select>
+            <input type="search" placeholder="Search by Student Number...">
+        </div>
+        <table>
+            <thead>
+                <tr><th>Student Name</th><th>Student Number</th><th>Query Type</th><th>Status</th><th>Date Submitted</th></tr>
+            </thead>
+            <tbody id="ticketBody"></tbody>
+        </table>
+        <div id="detailsPanel">
+            <h3 id="ticketTitle">Ticket Details</h3>
+            <p id="detailText"></p>
+            <div class="action-btns">
+                <button class="btn btn-blue" onclick="updateStatus('Approved')">Approve</button>
+                <button class="btn" onclick="updateStatus('Denied')">Deny</button>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="staff.js"></script>
+</body>
+</html>
 
