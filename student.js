@@ -58,6 +58,12 @@ window.openTicketModal = (category, options) => {
     select.innerHTML = '';
     
     // 4. Add the category as a disabled header (optional, helps UI)
+    const placeholder = document.createElement('option');
+    placeholder.text = "Please select...";
+    placeholder.value = "";
+    placeholder.disabled = true;
+    placeholder.selected = true;
+    select.add(placeholder);
     
     // 5. Loop through the array and add each option
     options.forEach(optionText => {
