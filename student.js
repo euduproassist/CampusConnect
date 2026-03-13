@@ -4,21 +4,21 @@ import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/fireba
 
 window.submitTicket = async () => {
     const loading = document.getElementById('loading');
-    loading.style.display = 'block'; // Show loading
 
-if (!studentNum || !email || !message) {
-    alert("Please fill in all required fields.");
-    loading.style.display = 'none';
-    return;
-}
-
-
-    try {
-        const user = auth.currentUser;
         const studentNum = document.getElementById('studentNum').value;
         const email = document.getElementById('emailAddr').value;
         const category = document.getElementById('queryType').value;
         const message = document.getElementById('desc').value;
+
+        if (!studentNum || !email || !message) {
+    alert("Please fill in all required fields.");
+    loading.style.display = 'none';
+    return;
+}
+        loading.style.display = 'block'; // Show loading
+    
+        try {
+        const user = auth.currentUser;
         const file = document.getElementById('fileUpload').files[0];
         
         let fileUrl = "";
