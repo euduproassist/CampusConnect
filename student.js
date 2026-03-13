@@ -47,8 +47,4 @@ window.submitTicket = async () => {
     }
 };
 
-// Add this to open the modal
-window.openTicketModal = (category) => {
-    document.getElementById('ticketModal').style.display = 'flex';
-    document.getElementById('queryType').innerHTML = `<option>${category}</option>`;
-};
+
