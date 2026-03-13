@@ -11,7 +11,7 @@ onSnapshot(q, (snapshot) => {
     snapshot.forEach((doc) => {
         const data = doc.data();
         const row = `<tr onclick="selectTicket('${doc.id}')" style="cursor:pointer;">
-            <td>${data.studentEmail || 'N/A'}</td>
+            <td>${data.email || 'N/A'}</td>
             <td>${data.studentNumber}</td>
             <td>${data.category}</td>
             <td><span class="status-pill">${data.status}</span></td>
@@ -20,6 +20,20 @@ onSnapshot(q, (snapshot) => {
         tbody.innerHTML += row;
     });
 });
+
+window.selectTicket = async (id) => {
+    selectedTicketId = id;
+    const docSnap = await getDoc(doc(db, "supportTickets", id));
+    const data = docSnap.data();
+    
+    document.getElementById("detailsPanel").style.display = 'block';
+    // Now including Email in the details view
+    document.getElementById("detailText").innerText = 
+        `Student Email: ${data.email}\n` + 
+        `Student Number: ${data.studentNumber}\n` + 
+        `Query: ${data.category}\n` + 
+        `Description: ${data.message}`;
+};
 
 window.updateStatus = async (newStatus) => {
     if (!selectedTicketId) return;
