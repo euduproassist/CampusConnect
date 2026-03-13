@@ -2,11 +2,6 @@ import { auth, db, storage } from './firebase-config.js';
 import { addDoc, collection } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-storage.js";
 
-
-import { auth, db, storage } from './firebase-config.js';
-import { addDoc, collection } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-
 window.submitTicket = async () => {
     const loading = document.getElementById('loading');
     loading.style.display = 'block'; // Show loading
