@@ -1005,5 +1005,72 @@
         </div>
     </div>
 
+        <script>
+        // Execution Controller for State Management
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 400);
+            }, 300);
+        });
+
+        // Interface Components DOM Tracking Targets
+        const viewLanding = document.getElementById('view-landing');
+        const viewSelection = document.getElementById('view-selection');
+        const triggerBuyPass = document.getElementById('trigger-buy-pass');
+        const backArrow = document.getElementById('header-back-arrow');
+        const secureTag = document.getElementById('header-secure-tag');
+        const menuIcon = document.getElementById('header-menu-icon');
+        const subNavElement = document.querySelector('.sub-nav');
+
+        // Logic Switch Event Toggles: Changes Views Instantly Without Breakage
+        triggerBuyPass.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Switch Panel View Configuration States
+            viewLanding.classList.remove('active-panel');
+            viewSelection.classList.add('active-panel');
+            
+            // Adjust Navigation Header Sub-nodes to Reflect Selection Page Context
+            backArrow.style.display = 'block';
+            secureTag.style.display = 'flex';
+            menuIcon.style.display = 'none';
+            subNavElement.style.display = 'none';
+        });
+
+        // Operational Return Route Function
+        backArrow.addEventListener('click', () => {
+            viewSelection.classList.remove('active-panel');
+            viewLanding.classList.add('active-panel');
+            
+            // Rollback Navigation Header Presentation Shell
+            backArrow.style.display = 'none';
+            secureTag.style.display = 'none';
+            menuIcon.style.display = 'block';
+            subNavElement.style.display = 'flex';
+        });
+
+        // Dynamic Interactive Card Class State Modifiers
+        function selectPassItem(selectedCard) {
+            // Remove selection markers from all neighbor cards inside active grid
+            const targetCards = document.querySelectorAll('.selection-card');
+            targetCards.forEach(card => {
+                card.classList.remove('card-selected');
+                const internalBtn = card.querySelector('.card-select-btn');
+                if (internalBtn) {
+                    internalBtn.classList.remove('btn-selected-state');
+                }
+            });
+
+            // Implement selection active state hooks directly on target element node reference
+            selectedCard.classList.add('card-selected');
+            const nativeBtn = selectedCard.querySelector('.card-select-btn');
+            if (nativeBtn) {
+                nativeBtn.classList.add('btn-selected-state');
+            }
+        }
+    </script>
+
 </body>
 </html>
