@@ -2,139 +2,571 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlexiPass - Instant Access</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FlexiPass - Instant Access Passes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-blue: #2385c5;
-            --light-bg: #f4f7f9;
+            --primary-blue: #1d6ed0;
+            --light-blue-bg: #eaf3ff;
+            --text-dark: #0a1128;
+            --text-muted: #5c6479;
+            --border-color: #eef2f6;
+            --bg-gray: #f8fafc;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #f4f7f9;
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            background-color: #121212; /* Dark ambient background for TVs/large displays */
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* App Wrapper to maintain exact mobile rendering across TVs, tablets, and phones */
+        .app-container {
+            width: 100%;
+            max-width: 450px;
+            height: 100vh;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        /* Hide Scrollbar for clean app presentation */
+        .app-container::-webkit-scrollbar {
+            width: 0px;
+        }
+
+        /* Full Screen Loading Overlay */
+        #loader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.4s ease;
+        }
+
+        /* Header Layout */
+        .header {
+            width: 100%;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            background: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--primary-blue);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .brand h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .menu-btn {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        /* Sub-Navigation Links */
+        .sub-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .nav-item.active {
+            color: var(--primary-blue);
+            font-weight: 600;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 2px;
+        }
+
+        /* Main Scrollable Content Box */
+        .main-content {
+            flex: 1;
+            padding: 24px 20px;
+        }
+
+        /* Micro-badge notice */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--light-blue-bg);
+            color: var(--primary-blue);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        /* Hero Text Area */
+        .hero-section h2 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+
+        .hero-section p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+
+        /* Phone mockup image layout */
+        .mockup-display {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .mockup-card {
+            width: 140px;
+            height: 220px;
+            border: 4px solid #1a365d;
+            border-radius: 20px;
+            padding: 12px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            justify-content: center;
+            position: relative;
         }
 
-        /* Navbar */
-        header {
+        .mockup-screen {
             width: 100%;
-            max-width: 800px;
+            height: 100%;
+            background: var(--primary-blue);
+            border-radius: 12px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            padding: 20px 0;
-            margin-bottom: 30px;
-        }
-
-        .logo { font-weight: 800; font-size: 1.5rem; color: #333; }
-        .nav-links a { margin-left: 20px; text-decoration: none; color: #555; font-size: 0.9rem; }
-
-        /* Main Container */
-        .container {
-            background: white;
-            width: 100%;
-            max-width: 800px;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            justify-content: center;
+            color: white;
+            gap: 8px;
             text-align: center;
         }
 
-        h1 { margin-bottom: 25px; color: #222; }
+        .mockup-screen i { font-size: 1.5rem; }
+        .mockup-screen span { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.5px; }
+        .mockup-screen .check-circle { font-size: 1rem; }
 
-        /* Input Field */
-        .phone-input {
+        /* Action Buttons */
+        .actions-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .btn {
             width: 100%;
-            max-width: 500px;
-            padding: 12px;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: opacity 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+        }
+
+        .btn-secondary {
+            background-color: #ffffff;
+            color: var(--primary-blue);
+            border: 1px solid var(--primary-blue);
+        }
+
+        .btn:active {
+            opacity: 0.8;
+        }
+
+        /* How it works section */
+        .section-title {
+            text-align: center;
+            font-size: 1.15rem;
+            font-weight: 700;
             margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
         }
 
-        /* Grid for Passes */
-        .pass-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 20px;
+        .steps-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 36px;
+            position: relative;
+            padding: 0 10px;
         }
 
-        .pass-card {
-            border: 1px solid #e0e0e0;
-            padding: 15px;
-            border-radius: 6px;
+        .step-node {
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
+            width: 22%;
+            position: relative;
         }
 
-        .pass-card h4 { margin: 5px 0; font-size: 0.9rem; color: #333; text-transform: uppercase; }
-        .pass-card .price { font-size: 1.1rem; font-weight: bold; margin: 5px 0; }
-        .pass-card .desc { font-size: 0.75rem; color: #666; margin-bottom: 10px; }
-
-        .select-btn {
-            background: #f0f7fb;
+        .step-icon-wrapper {
+            width: 42px;
+            height: 42px;
+            background: var(--bg-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--primary-blue);
-            border: 1px solid #cce4f2;
-            padding: 5px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-color);
         }
 
-        .continue-btn {
-            margin-top: 30px;
-            width: 100%;
+        .step-label {
+            font-size: 0.68rem;
+            color: var(--text-dark);
+            line-height: 1.3;
+            font-weight: 500;
+        }
+
+        .step-number {
+            display: inline-flex;
+            width: 14px;
+            height: 14px;
             background: var(--primary-blue);
             color: white;
-            padding: 15px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            cursor: pointer;
+            border-radius: 50%;
+            font-size: 0.55rem;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4px;
+            font-weight: 700;
         }
 
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            .pass-grid { grid-template-columns: 1fr; }
-            .container { padding: 20px; }
+        /* Grid System for the Popular Passes */
+        .passes-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .passes-header h3 { font-size: 1.1rem; font-weight: 700; }
+        .view-all { font-size: 0.78rem; color: var(--primary-blue); font-weight: 600; text-decoration: none; }
+
+        .passes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 32px;
+        }
+
+        .pass-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px 6px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .pass-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .pass-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .pass-duration {
+            font-size: 0.62rem;
+            color: var(--text-muted);
+        }
+
+        /* Features/Trust badging footer grid */
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            background: var(--bg-gray);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-align: left;
+        }
+
+        .trust-item i {
+            color: var(--primary-blue);
+            font-size: 0.95rem;
+        }
+
+        .trust-text h5 {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .trust-text p {
+            font-size: 0.62rem;
+            color: var(--text-muted);
+        }
+
+        /* Domain Bottom Bar decoration */
+        .domain-footer {
+            text-align: center;
+            padding: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* Auto Scaling Adaptations for wider displays (Tablets/TVs) */
+        @media (min-width: 451px) {
+            .app-container {
+                height: 850px;
+                border-radius: 32px;
+                border: 8px solid #1e293b;
+            }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">FlexiPass</div>
-    <div class="nav-links">
-        <a href="#">How it Works</a>
-        <a href="#">Pricing</a>
-        <a href="#">Support</a>
+    <div class="app-container">
+        <div id="loader">
+            <i class="fas fa-circle-notch fa-spin fa-2x" style="color: var(--primary-blue);"></i>
+        </div>
+
+        <div class="header">
+            <div class="brand">
+                <div class="brand-icon">F</div>
+                <h1>FlexiPass</h1>
+            </div>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+
+        <div class="sub-nav">
+            <span class="nav-item active">Home</span>
+            <span class="nav-item">Pricing</span>
+            <span class="nav-item">Activation Status</span>
+            <span class="nav-item">Support</span>
+        </div>
+
+        <div class="main-content">
+            
+            <div class="hero-section">
+                <div class="badge">
+                    <i class="fas fa-bolt"></i> Instant. Secure. No Registration.
+                </div>
+                <h2>Instant Access Passes Without Registration</h2>
+                <p>Purchase a time-based access pass in under 60 seconds. Enter your mobile number, select a pass, pay securely, and receive instant activation.</p>
+            </div>
+
+            <div class="mockup-display">
+                <div class="mockup-card">
+                    <div class="mockup-screen">
+                        <i class="fas fa-wifi"></i>
+                        <span>CONNECTED</span>
+                        <i class="fas fa-check-circle check-circle"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions-group">
+                <a href="#" class="btn btn-primary">Buy Pass <i class="fas fa-arrow-right" style="font-size: 0.8rem; margin-left: 4px;"></i></a>
+                <a href="#" class="btn btn-secondary">Check Activation Status <i class="fas fa-arrow-right" style="font-size: 0.8rem; margin-left: 4px;"></i></a>
+            </div>
+
+            <div class="section-title">How It Works</div>
+            <div class="steps-flow">
+                <div class="step-node">
+                    <div class="step-icon-wrapper"><i class="fas fa-mobile-alt"></i></div>
+                    <div><span class="step-number">1</span></div>
+                    <div class="step-label">Enter your phone number</div>
+                </div>
+                <div class="step-node">
+                    <div class="step-icon-wrapper"><i class="far fa-clock"></i></div>
+                    <div><span class="step-number">2</span></div>
+                    <div class="step-label">Choose a pass</div>
+                </div>
+                <div class="step-node">
+                    <div class="step-icon-wrapper"><i class="far fa-credit-card"></i></div>
+                    <div><span class="step-number">3</span></div>
+                    <div class="step-label">Complete payment</div>
+                </div>
+                <div class="step-node">
+                    <div class="step-icon-wrapper"><i class="far fa-check-circle"></i></div>
+                    <div><span class="step-number">4</span></div>
+                    <div class="step-label">Receive instant activation</div>
+                </div>
+            </div>
+
+            <div class="passes-container">
+                <div class="passes-header">
+                    <h3>Popular Passes</h3>
+                    <a href="#" class="view-all">View all pricing</a>
+                </div>
+                
+                <div class="passes-grid">
+                    <div class="pass-card">
+                        <div class="pass-title">1 Hour Pass</div>
+                        <div class="pass-price">$5.00</div>
+                        <div class="pass-duration">Valid for 60 minutes</div>
+                    </div>
+                    <div class="pass-card">
+                        <div class="pass-title">3 Hour Pass</div>
+                        <div class="pass-price">$12.00</div>
+                        <div class="pass-duration">Valid for 60 minutes</div>
+                    </div>
+                    <div class="pass-card">
+                        <div class="pass-title">Half Day Pass</div>
+                        <div class="pass-price">$18.00</div>
+                        <div class="pass-duration">Valid for 4 hours</div>
+                    </div>
+                    <div class="pass-card">
+                        <div class="pass-title">Daily Pass</div>
+                        <div class="pass-price">$30.00</div>
+                        <div class="pass-duration">Valid for 24 hours</div>
+                    </div>
+                    <div class="pass-card">
+                        <div class="pass-title">Weekly Pass</div>
+                        <div class="pass-price">$150.00</div>
+                        <div class="pass-duration">Valid for 7 days</div>
+                    </div>
+                    <div class="pass-card">
+                        <div class="pass-title">Weekend Pass</div>
+                        <div class="pass-price">$50.00</div>
+                        <div class="pass-duration">Valid for 48 hours</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <i class="fas fa-lock"></i>
+                    <div class="trust-text">
+                        <h5>Secure Payments</h5>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <i class="far fa-check-circle"></i>
+                    <div class="trust-text">
+                        <h5>Your Data is Always Protected</h5>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-bolt"></i>
+                    <div class="trust-text">
+                        <h5>Instant Activation</h5>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <i class="svg-inline i class="fas fa-headset"></i>
+                    <div class="trust-text">
+                        <h5>24/7 Support</h5>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="domain-footer">
+            <i class="fas fa-lock" style="font-size: 0.7rem;"></i> flexipass.com
+        </div>
     </div>
-</header>
 
-<div class="container">
-    <h2>Get Instant Access with Time Passes</h2>
-    <input type="text" class="phone-input" placeholder="🇺🇸 US - Enter your phone number (e.g., +1 234 567 8900)">
-    <p style="color: #666; font-size: 0.9rem;">Access simple time-based entry. Please select your pass duration below.</p>
-
-    <div class="pass-grid">
-        <div class="pass-card"><h4>1 Hour Pass</h4><div class="price">$5.00</div><div class="desc">Valid for 60 consecutive minutes</div><button class="select-btn">Select</button></div>
-        <div class="pass-card"><h4>3 Hour Pass</h4><div class="price">$12.00</div><div class="desc">Valid for 60 consecutive minutes</div><button class="select-btn">Select</button></div>
-        <div class="pass-card"><h4>Half Day Pass</h4><div class="price">4 Hrs<br>$18.00</div><button class="select-btn">Select</button></div>
-        <div class="pass-card"><h4>Daily Pass</h4><div class="price">24 Hrs<br>$30.00</div><button class="select-btn">Select</button></div>
-        <div class="pass-card"><h4>Weekly Pass</h4><div class="price">7 Days<br>$150.00</div><button class="select-btn">Select</button></div>
-        <div class="pass-card"><h4>Weekend Pass</h4><div class="price">48 Hrs<br>$50.00</div><button class="select-btn">Select</button></div>
-    </div>
-
-    <button class="continue-btn">CONTINUE</button>
-</div>
-
+    <script>
+        // Smooth Loader Exit Handler
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 400);
+            }, 300);
+        });
+    </script>
 </body>
 </html>
