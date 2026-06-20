@@ -409,6 +409,324 @@
                 border: 8px solid #1e293b;
             }
         }
+
+                /* Dynamic Multi-Device Adaptive Screen Auto-Sizing Layout Engine */
+        .view-panel {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            height: auto;
+        }
+        
+        .view-panel.active-panel {
+            display: flex;
+        }
+
+        /* Full Screen Window Constraints to Stop Scrolling Entirely Across Screen Categories */
+        .main-content {
+            flex: 1;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-y: auto;
+            max-height: calc(100vh - 120px);
+        }
+
+        /* Horizontal Layout Alignments for Header Sub-items */
+        .header-left-group, .header-right-group {
+            display: flex;
+            align-items: center;
+        }
+
+        /* View 2: Selection View Element Layout Matching Image Data */
+        .process-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 16px;
+            padding: 0 4px;
+        }
+
+        .process-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 22%;
+            opacity: 0.35;
+            text-align: center;
+        }
+
+        .process-node.active-step {
+            opacity: 1.0;
+        }
+
+        .process-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--bg-gray);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dark);
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+        }
+
+        .process-node.active-step .process-icon {
+            background: var(--light-blue-bg);
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .process-text {
+            font-size: 0.58rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .process-node.active-step .process-text {
+            color: var(--primary-blue);
+        }
+
+        .process-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+            margin-bottom: 18px;
+        }
+
+        .selection-heading {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .selection-heading h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .selection-heading p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Input Container Style Elements Matching Image Component Mapping */
+        .phone-input-container {
+            display: flex;
+            align-items: center;
+            border: 1px solid #dcdfe6;
+            border-radius: 6px;
+            padding: 10px 12px;
+            background: #ffffff;
+            margin-bottom: 8px;
+            width: 100%;
+        }
+
+        .country-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding-right: 12px;
+            border-right: 1px solid #eef2f6;
+            color: var(--text-dark);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .country-dropdown img {
+            width: 18px;
+            height: 12px;
+            border-radius: 2px;
+            object-fit: cover;
+        }
+
+        .country-dropdown i {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+        }
+
+        .phone-input-field {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding-left: 12px;
+            font-size: 0.88rem;
+            color: var(--text-dark);
+            font-weight: 400;
+            width: 100%;
+        }
+
+        .phone-input-field::placeholder {
+            color: #b4bccc;
+        }
+
+        .input-notice-text {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        /* Dual Column Dynamic Layout Matrix Grid for Inner Cards */
+        .selection-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 16px;
+            width: 100%;
+        }
+
+        .selection-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px 4px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            cursor: pointer;
+            min-height: 135px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .selection-card.card-selected {
+            border: 2px solid var(--primary-blue);
+            background: #ffffff;
+        }
+
+        .card-meta {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: -0.2px;
+        }
+
+        .card-icon-indicator {
+            width: 28px;
+            height: 28px;
+            background: var(--light-blue-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 0.85rem;
+            margin: 4px 0;
+        }
+
+        .card-rate {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.1;
+        }
+
+        .card-rate-sub {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-top: 2px;
+        }
+
+        .card-validity {
+            font-size: 0.58rem;
+            color: var(--text-muted);
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+
+        .card-select-btn {
+            width: 85%;
+            padding: 4px 0;
+            border: 1px solid #dcdfe6;
+            background: #ffffff;
+            color: var(--text-dark);
+            font-size: 0.72rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .selection-card.card-selected .card-select-btn {
+            border-color: var(--primary-blue);
+            background: var(--light-blue-bg);
+            color: var(--primary-blue);
+        }
+
+        /* Banner Support System Framework Elements */
+        .info-help-banner {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            background: #eff5ff;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-bottom: 16px;
+            width: 100%;
+        }
+
+        .info-help-icon {
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+            margin-top: 1px;
+        }
+
+        .info-help-content h6 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 1px;
+        }
+
+        .info-help-content p {
+            font-size: 0.7rem;
+            color: var(--primary-blue);
+            font-weight: 500;
+        }
+
+        .submit-continue-btn {
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .style-selection-footer {
+            margin-bottom: 0px !important;
+            padding: 10px !important;
+        }
+
+        /* Auto-scaling Fluid Sizing Optimizations via Device Breakpoints to Guarantee 0% Scrolling Layout Compliance */
+        @media (max-height: 740px) {
+            .main-content { padding: 10px 16px; }
+            .selection-heading h3 { font-size: 1.3rem; margin-bottom: 2px; }
+            .selection-card { min-height: 115px; padding: 8px 4px; }
+            .card-rate { font-size: 1.05rem; }
+            .card-rate-sub { font-size: 0.85rem; }
+            .mockup-display { margin-bottom: 12px; }
+            .mockup-card { height: 160px; width: 110px; }
+            .hero-section h2 { font-size: 1.5rem; }
+            .steps-flow { margin-bottom: 20px; }
+        }
+
+        @media (min-width: 600px) and (min-height: 900px) {
+            .selection-grid { gap: 12px; margin-bottom: 24px; }
+            .selection-card { min-height: 150px; padding: 16px 8px; }
+            .phone-input-container { margin-bottom: 12px; padding: 14px; }
+        }
     </style>
 </head>
 <body>
