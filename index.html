@@ -1,330 +1,140 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexiPass - Instant Access</title>
     <style>
-        body { 
-    font-family: 'Inter', sans-serif; 
-    background: #f4f7f6; 
-    margin: 0; 
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 80px;
-    padding-bottom: 20px;
-    box-sizing: border-box;
-}
+        :root {
+            --primary-blue: #2385c5;
+            --light-bg: #f4f7f9;
+        }
 
-.navbar {
-    position: fixed;
-    top: 10px;   
-    left: 10px;  
-    right: 10px;
-    padding: 15px 20px;
-    font-weight: bold;
-    font-size: 1.2rem;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.9); 
-    backdrop-filter: blur(5px);   
-    border-radius: 8px;         
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    border: 1px solid #eef0f2;        
-}
-        
-.grid { 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    grid-template-rows: repeat(2, 1fr);
-    gap: 20px; 
-    width: 95%; 
-    max-width: 1100px;
-    margin: 0;
-}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f4f7f9;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
 
-.card { 
-    background: white; 
-    padding: 30px 20px; 
-    border-radius: 8px; 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    border: 1px solid #eef0f2;
-}
+        /* Navbar */
+        header {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
 
-.card h3 { color: #333; font-size: 1.1rem; margin: 15px 0 10px 0; width: 100%; text-align: center; }
+        .logo { font-weight: 800; font-size: 1.5rem; color: #333; }
+        .nav-links a { margin-left: 20px; text-decoration: none; color: #555; font-size: 0.9rem; }
 
-.card ul { list-style: none; padding: 0; width: 100%; display: flex; flex-direction: column; align-items: center; }
+        /* Main Container */
+        .container {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            text-align: center;
+        }
 
-.card li { 
-    margin: 2px 0; 
-    font-size: clamp(0.7rem, 1.5vh, 0.85rem);
-    cursor: pointer; 
-    color: #555;
-}
+        h1 { margin-bottom: 25px; color: #222; }
 
-.card li::before {
-    content: "•";
-    color: #2172b5;
-    font-weight: bold;
-    display: inline-block; 
-    width: 1em;
-    margin-left: 0;
-    text-align: center;
-}
+        /* Input Field */
+        .phone-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
 
-.card li:hover { color: #003057; font-weight: bold; }
+        /* Grid for Passes */
+        .pass-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
 
-.icon { 
-    font-size: 1.5rem; 
-    background: #eef6ff; 
-    width: 70px; 
-    height: 70px; 
-    border-radius: 50%; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    color: #003057;
-}
+        .pass-card {
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.ticket-btn {
-    margin-top: 15px;
-    padding: 8px 15px;
-    background: #eef6ff;      
-    color: #003057;           
-    border: 1px solid #d1e3ff;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    font-weight: 600;
-    transition: background 0.2s;
-}
+        .pass-card h4 { margin: 5px 0; font-size: 0.9rem; color: #333; text-transform: uppercase; }
+        .pass-card .price { font-size: 1.1rem; font-weight: bold; margin: 5px 0; }
+        .pass-card .desc { font-size: 0.75rem; color: #666; margin-bottom: 10px; }
 
-.ticket-btn:hover {
-    background: #d1e3ff;      
-}
+        .select-btn {
+            background: #f0f7fb;
+            color: var(--primary-blue);
+            border: 1px solid #cce4f2;
+            padding: 5px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
 
-        @media (max-width: 1024px) {
-    /* 1. Stop the body from forcing everything to fit in one squashed window */
-    body { 
-        height: auto; 
-        overflow-y: auto; 
-        align-items: flex-start; 
-        padding-top: 20px;
-    }
+        .continue-btn {
+            margin-top: 30px;
+            width: 100%;
+            background: var(--primary-blue);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
 
-    /* 2. Fix the Grid: Stop forcing 2 rows so cards don't stretch vertically */
-    .grid { 
-        grid-template-columns: repeat(2, 1fr); 
-        grid-template-rows: auto; /* This stops the stretching */
-        height: auto; 
-        gap: 15px;
-    }
-
-    /* 3. Fix the Cards: Make them look like the laptop cards */
-    .card { 
-        padding: 15px 5px; 
-        justify-content: flex-start;
-        min-height: 200px; /* Gives them a consistent shape */
-    }
-
-    /* 4. Fix the Icons: Make them fit the smaller card size */
-    .icon { 
-        width: 45px; 
-        height: 45px; 
-        font-size: 1rem;
-    }
-
-    .card li {
-        font-size: 0.75rem;
-    }
-
-    /* 5. Adjust bullet points for the centered layout */
-    .card li::before {
-        margin-left: 0;
-        margin-right: 5px;
-    }
-}
-
-.modal-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.3);
-    display: flex; align-items: center; justify-content: center;
-    z-index: 2000;
-}
-
-.ticket-card {
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 500px;
-    display: flex; 
-    flex-direction: column;
-    gap: 15px;
-    border: 1px solid #ddd;
-    position: relative;
-}
-
-.close-btn {
-    background: none;
-    border: none;
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: #666;
-}
-
-.close-btn:hover {
-    color: #000;
-}
-        
-.ticket-card textarea { height: 100px; padding: 10px; }
-.ticket-card button { padding: 10px; background: #3b82f6; color: white; border: none; border-radius: 5px; cursor: pointer; }
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.form-group label {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #333;
-}
-
-.form-group input, .form-group select, .form-group textarea {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.submit-btn {
-    padding: 10px;
-    background: #5d9cec; 
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .pass-grid { grid-template-columns: 1fr; }
+            .container { padding: 20px; }
+        }
     </style>
 </head>
 <body>
-    <header class="navbar">CampusConnect</header>
-    <div id="portal" class="grid">
-    <div class="card">
-        <div class="icon">$</div>
-        <h3>Finance / Fees</h3>
-        <ul>
-            <li>Tuition & Payment Queries</li>
-            <li>Receipts & Proof of Payment</li>
-            <li>Refunds / Overpayments</li>
-            <li>Financial Aid / Bursaries</li>
-            <button class="ticket-btn" onclick="openTicketModal('Finance / Fees', ['Tuition & Payment Queries', 'Receipts & Proof of Payment', 'Refunds / Overpayments', 'Financial Aid / Bursaries'])">Submit Ticket</button>
-        </ul>
+
+<header>
+    <div class="logo">FlexiPass</div>
+    <div class="nav-links">
+        <a href="#">How it Works</a>
+        <a href="#">Pricing</a>
+        <a href="#">Support</a>
     </div>
-    <div class="card">
-        <div class="icon">🆔</div>
-        <h3>Registrar / Admissions</h3>
-        <ul>
-            <li>Student Card Requests</li>
-            <li>Enrollment Status / Admission Questions</li>
-            <li>Deregistration / Withdrawal</li>
-            <li>Certificates</li>
-            <button class="ticket-btn" onclick="openTicketModal('Registrar / Admissions', ['Student Card Requests', 'Enrollment Status / Admission Questions', 'Deregistration / Withdrawal', 'Certificates'])">Submit Ticket</button>
-        </ul>
+</header>
+
+<div class="container">
+    <h2>Get Instant Access with Time Passes</h2>
+    <input type="text" class="phone-input" placeholder="🇺🇸 US - Enter your phone number (e.g., +1 234 567 8900)">
+    <p style="color: #666; font-size: 0.9rem;">Access simple time-based entry. Please select your pass duration below.</p>
+
+    <div class="pass-grid">
+        <div class="pass-card"><h4>1 Hour Pass</h4><div class="price">$5.00</div><div class="desc">Valid for 60 consecutive minutes</div><button class="select-btn">Select</button></div>
+        <div class="pass-card"><h4>3 Hour Pass</h4><div class="price">$12.00</div><div class="desc">Valid for 60 consecutive minutes</div><button class="select-btn">Select</button></div>
+        <div class="pass-card"><h4>Half Day Pass</h4><div class="price">4 Hrs<br>$18.00</div><button class="select-btn">Select</button></div>
+        <div class="pass-card"><h4>Daily Pass</h4><div class="price">24 Hrs<br>$30.00</div><button class="select-btn">Select</button></div>
+        <div class="pass-card"><h4>Weekly Pass</h4><div class="price">7 Days<br>$150.00</div><button class="select-btn">Select</button></div>
+        <div class="pass-card"><h4>Weekend Pass</h4><div class="price">48 Hrs<br>$50.00</div><button class="select-btn">Select</button></div>
     </div>
-    <div class="card">
-        <div class="icon">📖</div>
-        <h3>Library / Resources</h3>
-        <ul>
-            <li>Borrowing & Returns</li>
-            <li>Digital Resources Access</li>
-            <li>Printing / Photocopying Requests</li>
-            <li>Study Space / Resource Booking</li>
-            <button class="ticket-btn" onclick="openTicketModal('Library / Resources', ['Borrowing & Returns', 'Digital Resources Access', 'Printing / Photocopying Requests', 'Study Space / Resource Booking'])">Submit Ticket</button> 
-        </ul>
-    </div>
-    <div class="card">
-        <div class="icon">📅</div>
-        <h3>Timetable / Classes</h3>
-        <ul>
-            <li>Exam Timetable Requests</li>
-            <li>Test / Quiz Schedule Requests</li>
-            <li>Lecture Room & Class Info</li>
-            <li>Class Reschedule / Make-Up</li>
-            <button class="ticket-btn" onclick="openTicketModal('Timetable / Classes', ['Exam Timetable Requests', 'Test / Quiz Schedule Requests', 'Lecture Room & Class Info', 'Class Reschedule / Make-Up'])">Submit Ticket</button>
-        </ul>
-    </div>
-    <div class="card">
-        <div class="icon">🎓</div>
-        <h3>Examinations / Results</h3>
-        <ul>
-            <li>Exam Registration / Eligibility</li>
-            <li>Results / Transcripts</li>
-            <li>Re-mark / Appeal Requests</li>
-            <li>Graduation / Certificate Requests</li>
-            <button class="ticket-btn" onclick="openTicketModal('Examinations / Results', ['Exam Registration / Eligibility', 'Results / Transcripts', 'Re-mark / Appeal Requests', 'Graduation / Certificate Requests'])">Submit Ticket</button>
-        </ul>
-    </div>
-    <div class="card">
-        <div class="icon">💬</div>
-        <h3>Student Services / Miscellaneous</h3>
-        <ul>
-            <li>Leave / Deferment Applications</li>
-            <li>Counselling / Career Guidance</li>
-            <li>Health & Wellness Requests</li>
-            <li>Events / Clubs / General Requests</li>
-            <button class="ticket-btn" onclick="openTicketModal('Student Services / Miscellaneous', ['Leave / Deferment Applications', 'Counselling / Career Guidance', 'Health & Wellness Requests', 'Events / Clubs / General Requests'])">Submit Ticket</button>
-        </ul>
-    </div>
+
+    <button class="continue-btn">CONTINUE</button>
 </div>
 
-    <div id="ticketModal" class="modal-overlay" style="display:none;">
-    <div class="ticket-card">
-    <button class="close-btn" onclick="document.getElementById('ticketModal').style.display='none'">✕</button>
-        <h2 style="margin-top:0;">Submit a Ticket</h2>
-        
-        <div class="form-group">
-            <label>Student Number:</label>
-            <input type="text" id="studentNum">
-        </div>
-        
-        <div class="form-group">
-            <label>Email Address:</label>
-            <input type="email" id="emailAddr">
-        </div>
-        
-        <div class="form-group">
-            <label>Select Query Type:</label>
-            <select id="queryType"></select>
-        </div>
-        
-        <div class="form-group">
-            <label>Describe your request:</label>
-            <textarea id="desc"></textarea>
-        </div>
-        
-        <div class="form-group">
-            <label>Upload Supporting Document:</label>
-            <input type="file" id="fileUpload">
-            <small>Max file size: 5MB</small>
-        </div>
-
-        <button class="submit-btn" onclick="submitTicket()">Submit Ticket</button>
-        <div id="loading" style="display:none; text-align:center;">Submitting...</div>
-    </div>
-</div>
-    
-    <script type="module" src="student.js"></script>
 </body>
 </html>
