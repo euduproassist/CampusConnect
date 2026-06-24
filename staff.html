@@ -3,99 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QualifySA - Find Every University Course You Qualify For</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>QualifySA - Enter Your Marks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-blue: #1c64f2;
-            --primary-blue-hover: #1a56cc;
-            --text-dark: #0f172a;
+            --primary: #1c64f2;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
             --text-muted: #64748b;
-            --light-bg: #f8fafc;
-            --pill-bg: #eff6ff;
-            --pill-text: #1d6ed0;
-            --uj-orange: #ea580c;
-            --up-red: #dc2626;
-            --nwu-purple: #7c3aed;
+            --border: #e2e8f0;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-
-        body { background-color: #ffffff; color: var(--text-dark); line-height: 1.5; }
-
-        .wrapper { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        body { background-color: #fafafa; color: var(--text-main); padding-bottom: 50px; }
 
         /* Header */
-        .header { height: 90px; display: flex; align-items: center; justify-content: space-between; }
-        .brand { display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 1.6rem; color: var(--text-dark); }
-        .brand i { color: var(--primary-blue); font-size: 1.4rem; }
-        .brand span { color: var(--primary-blue); }
-        .nav-links { display: flex; gap: 36px; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.95rem; }
+        header { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
+        .logo i { color: var(--primary); }
+        .nav { display: flex; gap: 20px; font-weight: 600; font-size: 0.9rem; }
 
-        /* Hero */
-        .hero-section { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; margin-top: 40px; margin-bottom: 90px; }
-        .micro-badge { background: var(--pill-bg); color: var(--pill-text); padding: 6px 14px; border-radius: 30px; font-size: 0.78rem; font-weight: 600; width: fit-content; margin-bottom: 24px; }
-        .hero-content h1 { font-size: 3.1rem; font-weight: 800; line-height: 1.12; letter-spacing: -1.5px; margin-bottom: 20px; }
-        .hero-content h1 span { color: var(--primary-blue); }
-        .hero-content p { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 32px; max-width: 530px; }
-        .cta-btn { padding: 16px 36px; background-color: var(--primary-blue); color: white; border-radius: 10px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+        /* Stepper */
+        .stepper { display: flex; justify-content: center; align-items: center; gap: 20px; margin: 40px 0; }
+        .step { display: flex; align-items: center; gap: 10px; color: var(--text-muted); font-size: 0.9rem; }
+        .step.active { color: var(--text-main); }
+        .step-circle { width: 30px; height: 30px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .step-inactive { border: 2px solid var(--border); background: transparent; color: var(--text-muted); }
 
-        /* Card */
-        .score-card { background: #ffffff; border-radius: 24px; padding: 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.04); border: 1px solid #f1f5f9; }
-        .result-pill { text-align: center; font-size: 0.78rem; color: var(--pill-text); background: var(--pill-bg); padding: 4px 14px; border-radius: 30px; margin-bottom: 24px; display: inline-block; }
-        .score-number { font-size: 4.8rem; font-weight: 800; color: var(--primary-blue); text-align: center; }
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9; padding: 16px 0; margin: 24px 0; }
-        .program-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--light-bg); border-radius: 10px; margin-bottom: 10px; }
+        /* Main Container */
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .title-box { text-align: center; margin-bottom: 40px; }
+        .title-box h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .title-box p { color: var(--text-muted); }
 
-        /* How it works */
-        .section-title { text-align: center; font-size: 1.75rem; font-weight: 800; margin-bottom: 40px; }
-        .process-flow { display: flex; justify-content: space-between; margin-bottom: 90px; }
-        .process-step { text-align: center; width: 30%; }
-        .step-icon-wrapper { width: 64px; height: 64px; background: var(--pill-bg); color: var(--pill-text); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.3rem; }
+        .grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; align-items: start; }
 
-        /* Value Strip */
-        .value-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; background: var(--light-bg); padding: 32px 40px; border-radius: 20px; margin-bottom: 90px; }
-        .value-card { display: flex; align-items: center; gap: 16px; }
-        .value-icon { width: 48px; height: 48px; background: #ffffff; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary-blue); }
+        /* Left Panel */
+        .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+        .section-header { display: flex; align-items: center; gap: 10px; font-weight: 700; margin-bottom: 20px; }
+        .subject-row { display: grid; grid-template-columns: 1fr 80px; gap: 15px; align-items: center; margin-bottom: 15px; }
+        input { padding: 12px; border: 1px solid var(--border); border-radius: 8px; width: 100%; }
+        .add-subject-area { border: 2px dashed var(--border); border-radius: 12px; padding: 20px; text-align: center; margin-top: 20px; }
+        .search-box { margin-top: 15px; position: relative; }
+        .dropdown { position: absolute; top: 100%; width: 100%; background: white; border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 10; }
+        .dropdown-item { padding: 12px; cursor: pointer; }
+        .dropdown-item:hover { background: #f1f5f9; }
 
-        /* Footer */
-        .bottom-cta-shell { text-align: center; padding-bottom: 80px; }
-        .bottom-cta-shell h3 { font-size: 2.2rem; margin-bottom: 12px; }
+        /* Right Panel */
+        .aps-calculator { text-align: center; position: sticky; top: 20px; }
+        .circle-placeholder { width: 180px; height: 180px; border: 8px solid var(--border); border-radius: 50%; margin: 20px auto; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--text-muted); }
+        .info-box { background: #eff6ff; padding: 20px; border-radius: 12px; margin-top: 20px; text-align: left; }
+        .info-box h4 { margin-bottom: 8px; }
+        .info-box a { color: var(--primary); font-weight: 600; text-decoration: none; }
     </style>
 </head>
 <body>
-    <header class="header wrapper">
-        <div class="brand"><i class="fas fa-graduation-cap"></i> Qualify<span>SA</span></div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Universities</a></li>
-            <li><a href="#">Courses</a></li>
-        </ul>
-    </header>
 
-    <main class="wrapper">
-        <section class="hero-section">
-            <div class="hero-content">
-                <div class="micro-badge">100% FREE • No Sign Up • No Hidden Costs</div>
-                <h1>Find Every University Course You <span>Qualify For</span></h1>
-                <p>Enter your Grade 12 subjects and marks. We'll calculate your APS and show you all the universities and programmes you qualify for.</p>
-                <a href="#" class="cta-btn">Check My Results <i class="fas fa-arrow-right"></i></a>
+<header>
+    <div class="logo"><i class="fas fa-graduation-cap"></i> QualifySA</div>
+    <div class="nav"><span>Home</span><span>Universities</span><span>Courses</span></div>
+</header>
+
+<div class="container">
+    <div class="stepper">
+        <div class="step active"><div class="step-circle">1</div> Enter Marks</div>
+        <div class="step"><div class="step-circle step-inactive">2</div> View Results</div>
+        <div class="step"><div class="step-circle step-inactive">3</div> Explore Options</div>
+    </div>
+
+    <div class="title-box">
+        <h1>Enter Your Marks to See Your Future! 🎉</h1>
+        <p>Based on your mark, here are the universities and programmes you qualify for.</p>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <div class="section-header"><i class="far fa-file-alt"></i> Add Your Grade 12 Subjects & Marks</div>
+            <div class="subject-row"><div>English Home Language</div><input type="text" value="72%"></div>
+            <div class="subject-row"><div>Mathematics</div><input type="text" placeholder=""></div>
+            <div class="subject-row"><div>Life Orientation</div><input type="text" placeholder=""></div>
+            <div class="subject-row"><div>Accounting</div><input type="text" placeholder=""></div>
+            
+            <div class="add-subject-area">
+                <i class="fas fa-plus" style="color:var(--primary); margin-bottom: 10px;"></i>
+                <div style="font-weight: 600;">Add New Subject</div>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">Select common South African subjects, such as:</p>
+                <div class="search-box">
+                    <input type="text" placeholder="Search subjects...">
+                    <div class="dropdown">
+                        <div class="dropdown-item">Business Studies</div>
+                        <div class="dropdown-item">Physical Sciences</div>
+                        <div class="dropdown-item">History</div>
+                        <div class="dropdown-item">Computer Applications Technology</div>
+                    </div>
+                </div>
             </div>
-            <div class="score-card">
-                <div class="result-pill">Example Result</div>
-                <div class="score-number">34</div>
-                <div class="stats-grid">
-                    <div><h4>12</h4><p>Universities</p></div>
-                    <div><h4>84</h4><p>Programmes</p></div>
-                </div>
-                </div>
-        </section>
-        
-        <h2 class="section-title">How It Works</h2>
-        <section class="process-flow">
-            </section>
-    </main>
+        </div>
+
+        <div class="aps-calculator">
+            <div class="card">
+                <div class="section-header"><i class="fas fa-calculator"></i> Calculate Your APS</div>
+                <div class="circle-placeholder">??</div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Interactive circle will update with subjects in a color-coded % to add your subjects.</p>
+            </div>
+            <div class="info-box">
+                <h4><i class="far fa-lightbulb"></i> What is APS?</h4>
+                <p style="font-size: 0.85rem; margin-bottom: 10px;">APS (Admission Point Score) is used by universities to determine admission to degree programmes.</p>
+                <a href="#">Learn more about APS &rarr;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
