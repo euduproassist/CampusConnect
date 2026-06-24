@@ -2,772 +2,100 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QualifySA - Find Every University Course You Qualify For</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-blue: #1d6ed0;
-            --btn-blue: #1c64f2;
-            --btn-blue-hover: #1a56cc;
-            --light-blue-bg: #eff6ff;
+            --primary-blue: #1c64f2;
+            --primary-blue-hover: #1a56cc;
             --text-dark: #0f172a;
             --text-muted: #64748b;
-            --border-color: #f1f5f9;
-            --bg-gray: #f8fafc;
-            --uj-orange: #d97706;
-            --up-red: #b91c1c;
-            --nwu-purple: #6b21a8;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        /* Enforce a single full screen viewport layout with 0% overflow */
-        html, body {
-            width: 100%;
-            height: 100vh;
-            max-height: 100vh;
-            overflow: hidden;
-            background-color: #f8fafc;
-            color: var(--text-dark);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Adaptive Master Container based on 1000162934_5.png layout proportions */
-        .app-container {
-            width: 100%;
-            height: 100vh;
-            max-height: 100vh;
-            background-color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Fixed Top Global Navigation Bar */
-        .header {
-            width: 100%;
-            height: 64px;
-            padding: 0 5%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #e2e8f0;
-            background: #ffffff;
-            flex-shrink: 0;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 800;
-            font-size: 1.4rem;
-            color: var(--text-dark);
-        }
-
-        .brand i {
-            color: var(--primary-blue);
-            font-size: 1.5rem;
-        }
-
-        .brand span {
-            color: var(--primary-blue);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-blue);
-        }
-
-        /* Main Content Box styled dynamically to pack everything on screen */
-        .main-content {
-            flex: 1;
-            padding: 2.5vh 5%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-        }
-
-        /* Hero Area and Mockup Widget Double Split Grid Box */
-        .hero-split-grid {
-            display: flex;
-            gap: 4%;
-            align-items: center;
-            height: 42%;
-            min-height: 0;
-        }
-
-        .hero-text-side {
-            flex: 1.1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .micro-pill-notice {
-            display: inline-flex;
-            align-items: center;
-            width: fit-content;
-            background: var(--light-blue-bg);
-            color: var(--primary-blue);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            border: 1px solid #dbeafe;
-        }
-
-        .hero-text-side h2 {
-            font-size: clamp(1.8rem, 3.2vh, 2.5rem);
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -0.8px;
-            margin-bottom: 12px;
-            color: var(--text-dark);
-        }
-
-        .hero-text-side p {
-            font-size: clamp(0.85rem, 1.6vh, 0.95rem);
-            color: var(--text-muted);
-            line-height: 1.45;
-            margin-bottom: 18px;
-            max-width: 520px;
-        }
-
-        .cta-btn {
-            width: fit-content;
-            padding: 12px 28px;
-            background-color: var(--btn-blue);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: background-color 0.2s, transform 0.1s;
-            box-shadow: 0 4px 12px rgba(28, 100, 242, 0.2);
-            text-decoration: none;
-        }
-
-        .cta-btn:hover {
-            background-color: var(--btn-blue-hover);
-        }
-
-        .cta-btn:active {
-            transform: scale(0.98);
-        }
-
-        .social-proof-avatars {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 14px;
-        }
-
-        .avatar-group {
-            display: flex;
-            margin-left: 4px;
-        }
-
-        .avatar-group img {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            border: 2px solid white;
-            margin-left: -6px;
-            object-fit: cover;
-        }
-
-        .avatar-group img:first-child {
-            margin-left: 0;
-        }
-
-        .social-proof-text {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        /* Right Floating Score Display Component Block */
-        .mockup-widget-side {
-            flex: 0.9;
-            display: flex;
-            justify-content: flex-end;
-            height: 100%;
-        }
-
-        .floating-score-card {
-            width: 100%;
-            max-width: 360px;
-            height: 100%;
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 4%;
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-            border: 1px solid #f1f5f9;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .example-result-pill {
-            align-self: center;
-            background: var(--light-blue-bg);
-            color: var(--primary-blue);
-            font-size: 0.72rem;
-            font-weight: 600;
-            padding: 3px 12px;
-            border-radius: 12px;
-        }
-
-        .score-center-display {
-            text-align: center;
-            margin: auto 0;
-        }
-
-        .score-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .score-number {
-            font-size: clamp(2.5rem, 6vh, 4rem);
-            font-weight: 800;
-            color: var(--primary-blue);
-            line-height: 1;
-            margin: 4px 0;
-        }
-
-        .stats-mini-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            padding: 8px 0;
-            margin-bottom: 8px;
-        }
-
-        .stat-box {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .stat-icon {
-            width: 28px;
-            height: 28px;
-            background: var(--light-blue-bg);
-            color: var(--primary-blue);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-        }
-
-        .stat-info h4 {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            line-height: 1.1;
-        }
-
-        .stat-info p {
-            font-size: 0.68rem;
-            color: var(--text-muted);
-        }
-
-        .sample-programs-title {
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 6px;
-        }
-
-        .mini-program-list {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .mini-program-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 6px 8px;
-            background: var(--bg-gray);
-            border-radius: 6px;
-        }
-
-        .program-brand-meta {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .program-logo-indicator {
-            width: 18px;
-            height: 18px;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.55rem;
-            font-weight: 700;
-        }
-
-        .bg-uj { background-color: var(--uj-orange); }
-        .bg-up { background-color: var(--up-red); }
-        .bg-nwu { background-color: var(--nwu-purple); }
-
-        .program-names h5 {
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            line-height: 1.1;
-        }
-
-        .program-names p {
-            font-size: 0.62rem;
-            color: var(--text-muted);
-        }
-
-        .mini-program-item i {
-            font-size: 0.65rem;
-            color: var(--text-muted);
-        }
-
-        /* Section Middle Content Title */
-        .flow-section-title {
-            text-align: center;
-            font-size: clamp(1rem, 2vh, 1.25rem);
-            font-weight: 800;
-            color: var(--text-dark);
-            margin: 1vh 0;
-        }
-
-        /* Connective Operational Flow Element Layout Blocks */
-        .how-it-works-flow {
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-start;
-            position: relative;
-            height: 14%;
-            min-height: 0;
-            padding: 0 4%;
-        }
-
-        .flow-node {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            width: 25%;
-            position: relative;
-        }
-
-        .flow-icon-outer {
-            width: clamp(32px, 5vh, 44px);
-            height: clamp(32px, 5vh, 44px);
-            background: #ffffff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-blue);
-            font-size: clamp(0.9rem, 1.8vh, 1.1rem);
-            margin-bottom: 6px;
-            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.05);
-            border: 1px solid var(--border-color);
-            position: relative;
-        }
-
-        .node-number-badge {
-            position: absolute;
-            bottom: -2px;
-            left: -2px;
-            width: 14px;
-            height: 14px;
-            background: var(--light-blue-bg);
-            color: var(--primary-blue);
-            border-radius: 50%;
-            font-size: 0.6rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .flow-node h4 {
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 2px;
-        }
-
-        .flow-node p {
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            line-height: 1.3;
-            max-width: 140px;
-        }
-
-        /* Highlight Grid Box for Core Features Metrics */
-        .features-value-strip {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            background: var(--bg-gray);
-            padding: 1.5vh 20px;
-            border-radius: 12px;
-            height: 12%;
-            min-height: 0;
-            align-items: center;
-        }
-
-        .value-card {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .value-card-icon {
-            width: 36px;
-            height: 36px;
-            background: #ffffff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-blue);
-            font-size: 1rem;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-            flex-shrink: 0;
-        }
-
-        .value-card-info h4 {
-            font-size: 1rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            line-height: 1.1;
-        }
-
-        .value-card-info p {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        /* Bottom Action Footer Interface Area Container */
-        .footer-action-shell {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            height: 16%;
-            min-height: 0;
-        }
-
-        .footer-action-shell h3 {
-            font-size: clamp(1.1rem, 2.2vh, 1.5rem);
-            font-weight: 800;
-            color: var(--text-dark);
-        }
-
-        .footer-action-shell p {
-            font-size: clamp(0.75rem, 1.4vh, 0.85rem);
-            color: var(--text-muted);
-            margin-bottom: 4px;
-        }
-
-        .footer-verified-tag {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 0.68rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            margin-top: 2px;
-        }
-
-        .footer-verified-tag i {
-            color: #10b981;
-        }
-
-        /* Adaptive Fluid Framework Engine Layout Rules Mapping Media Queries */
-        @media (max-height: 680px) {
-            .header { height: 50px; }
-            .hero-split-grid { height: 45%; }
-            .how-it-works-flow { height: 15%; }
-            .features-value-strip { height: 13%; }
-            .footer-action-shell { height: 17%; }
-            .hero-text-side h2 { margin-bottom: 6px; }
-            .hero-text-side p { margin-bottom: 10px; }
-            .floating-score-card { padding: 3%; }
-            .stats-mini-row { padding: 4px 0; margin-bottom: 4px; }
-            .mini-program-list { gap: 4px; }
-        }
-
-        @media (max-width: 768px) {
-            .hero-split-grid {
-                flex-direction: column;
-                height: 48%;
-                gap: 10px;
-            }
-            .hero-text-side {
-                text-align: center;
-                align-items: center;
-                flex: 1;
-            }
-            .hero-text-side p {
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                margin-bottom: 8px;
-            }
-            .social-proof-avatars { display: none; }
-            .mockup-widget-side {
-                flex: 1;
-                justify-content: center;
-                width: 100%;
-            }
-            .floating-score-card {
-                max-width: 100%;
-                height: 100%;
-            }
-            .how-it-works-flow { display: none; }
-            .flow-section-title { display: none; }
-            .features-value-strip {
-                grid-template-columns: 1fr;
-                gap: 6px;
-                height: 22%;
-                padding: 8px 16px;
-            }
-            .value-card { gap: 8px; }
-            .footer-action-shell { height: 18%; }
-        }
-
-        /* Component Level Fixes for Viewports matching Tablet Specs */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .hero-split-grid { gap: 2%; }
-            .floating-score-card { max-width: 290px; }
-            .nav-links { gap: 16px; }
-        }
+            --light-bg: #f8fafc;
+            --pill-bg: #eff6ff;
+            --pill-text: #1d6ed0;
+            --uj-orange: #ea580c;
+            --up-red: #dc2626;
+            --nwu-purple: #7c3aed;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+        body { background-color: #ffffff; color: var(--text-dark); line-height: 1.5; }
+
+        .wrapper { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* Header */
+        .header { height: 90px; display: flex; align-items: center; justify-content: space-between; }
+        .brand { display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 1.6rem; color: var(--text-dark); }
+        .brand i { color: var(--primary-blue); font-size: 1.4rem; }
+        .brand span { color: var(--primary-blue); }
+        .nav-links { display: flex; gap: 36px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.95rem; }
+
+        /* Hero */
+        .hero-section { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; margin-top: 40px; margin-bottom: 90px; }
+        .micro-badge { background: var(--pill-bg); color: var(--pill-text); padding: 6px 14px; border-radius: 30px; font-size: 0.78rem; font-weight: 600; width: fit-content; margin-bottom: 24px; }
+        .hero-content h1 { font-size: 3.1rem; font-weight: 800; line-height: 1.12; letter-spacing: -1.5px; margin-bottom: 20px; }
+        .hero-content h1 span { color: var(--primary-blue); }
+        .hero-content p { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 32px; max-width: 530px; }
+        .cta-btn { padding: 16px 36px; background-color: var(--primary-blue); color: white; border-radius: 10px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+
+        /* Card */
+        .score-card { background: #ffffff; border-radius: 24px; padding: 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.04); border: 1px solid #f1f5f9; }
+        .result-pill { text-align: center; font-size: 0.78rem; color: var(--pill-text); background: var(--pill-bg); padding: 4px 14px; border-radius: 30px; margin-bottom: 24px; display: inline-block; }
+        .score-number { font-size: 4.8rem; font-weight: 800; color: var(--primary-blue); text-align: center; }
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9; padding: 16px 0; margin: 24px 0; }
+        .program-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--light-bg); border-radius: 10px; margin-bottom: 10px; }
+
+        /* How it works */
+        .section-title { text-align: center; font-size: 1.75rem; font-weight: 800; margin-bottom: 40px; }
+        .process-flow { display: flex; justify-content: space-between; margin-bottom: 90px; }
+        .process-step { text-align: center; width: 30%; }
+        .step-icon-wrapper { width: 64px; height: 64px; background: var(--pill-bg); color: var(--pill-text); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.3rem; }
+
+        /* Value Strip */
+        .value-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; background: var(--light-bg); padding: 32px 40px; border-radius: 20px; margin-bottom: 90px; }
+        .value-card { display: flex; align-items: center; gap: 16px; }
+        .value-icon { width: 48px; height: 48px; background: #ffffff; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary-blue); }
+
+        /* Footer */
+        .bottom-cta-shell { text-align: center; padding-bottom: 80px; }
+        .bottom-cta-shell h3 { font-size: 2.2rem; margin-bottom: 12px; }
     </style>
 </head>
 <body>
+    <header class="header wrapper">
+        <div class="brand"><i class="fas fa-graduation-cap"></i> Qualify<span>SA</span></div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Universities</a></li>
+            <li><a href="#">Courses</a></li>
+        </ul>
+    </header>
 
-    <div class="app-container">
-        <!-- Brand Header Bar Frame -->
-        <div class="header">
-            <div class="brand">
-                <i class="fas fa-graduation-cap"></i> Qualify<span>SA</span>
+    <main class="wrapper">
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="micro-badge">100% FREE • No Sign Up • No Hidden Costs</div>
+                <h1>Find Every University Course You <span>Qualify For</span></h1>
+                <p>Enter your Grade 12 subjects and marks. We'll calculate your APS and show you all the universities and programmes you qualify for.</p>
+                <a href="#" class="cta-btn">Check My Results <i class="fas fa-arrow-right"></i></a>
             </div>
-            <ul class="nav-links">
-                <li><a href="#" style="color: var(--text-dark); font-weight: 700;">Home</a></li>
-                <li><a href="#">Universities</a></li>
-                <li><a href="#">Courses</a></li>
-            </ul>
-        </div>
-
-        <!-- Master Viewport Dynamic Sheet Content Frame -->
-        <div class="main-content">
-            
-            <!-- Grid Partition Section: Left Hero Layout Text & Right Micro Mockup Container Box -->
-            <div class="hero-split-grid">
-                <div class="hero-text-side">
-                    <div class="micro-pill-notice">
-                        100% FREE • No Sign Up • No Hidden Costs
-                    </div>
-                    <h2>Find Every University Course You <span>Qualify For</span></h2>
-                    <p>Enter your Grade 12 subjects and marks. We'll calculate your APS and show you all the universities and programmes you qualify for.</p>
-                    
-                    <a href="#" class="cta-btn">Check My Results <i class="fas fa-arrow-right"></i></a>
-                    
-                    <div class="social-proof-avatars">
-                        <div class="avatar-group">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Student">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Student">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Student">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Student">
-                        </div>
-                        <span class="social-proof-text">Join thousands of South African students who've already found their future.</span>
-                    </div>
+            <div class="score-card">
+                <div class="result-pill">Example Result</div>
+                <div class="score-number">34</div>
+                <div class="stats-grid">
+                    <div><h4>12</h4><p>Universities</p></div>
+                    <div><h4>84</h4><p>Programmes</p></div>
                 </div>
-
-                <div class="mockup-widget-side">
-                    <div class="floating-score-card">
-                        <div class="example-result-pill">Example Result</div>
-                        
-                        <div class="score-center-display">
-                            <div class="score-label">APS Score</div>
-                            <div class="score-number">34</div>
-                        </div>
-
-                        <div class="stats-mini-row">
-                            <div class="stat-box">
-                                <div class="stat-icon"><i class="fas fa-university"></i></div>
-                                <div class="stat-info">
-                                    <h4>12</h4>
-                                    <p>Universities</p>
-                                </div>
-                            </div>
-                            <div class="stat-box">
-                                <div class="stat-icon"><i class="fas fa-book-open"></i></div>
-                                <div class="stat-info">
-                                    <h4>84</h4>
-                                    <p>Programmes</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="sample-programs-area">
-                            <div class="sample-programs-title">Sample Programmes You Qualify For</div>
-                            <div class="mini-program-list">
-                                <div class="mini-program-item">
-                                    <div class="program-brand-meta">
-                                        <div class="program-logo-indicator bg-uj">UJ</div>
-                                        <div class="program-names">
-                                            <h5>University of Johannesburg</h5>
-                                            <p>BCom Accounting</p>
-                                        </div>
-                                    </div>
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
-                                <div class="mini-program-item">
-                                    <div class="program-brand-meta">
-                                        <div class="program-logo-indicator bg-up">UP</div>
-                                        <div class="program-names">
-                                            <h5>University of Pretoria</h5>
-                                            <p>BSc Information Technology</p>
-                                        </div>
-                                    </div>
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
-                                <div class="mini-program-item">
-                                    <div class="program-brand-meta">
-                                        <div class="program-logo-indicator bg-nwu">NWU</div>
-                                        <div class="program-names">
-                                            <h5>North-West University</h5>
-                                            <p>BA Psychology</p>
-                                        </div>
-                                    </div>
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
-
-            <!-- Title Header Label for Stepper Box Component -->
-            <div class="flow-section-title">How It Works</div>
-
-            <!-- Connected System Flow Steps Bar Container -->
-            <div class="how-it-works-flow">
-                <div class="flow-node">
-                    <div class="flow-icon-outer">
-                        <i class="far fa-file-alt"></i>
-                        <div class="node-number-badge">1</div>
-                    </div>
-                    <h4>Enter Your Marks</h4>
-                    <p>Add your Grade 12 subjects and your marks.</p>
-                </div>
-                <div class="flow-node">
-                    <div class="flow-icon-outer">
-                        <i class="fas fa-calculator"></i>
-                        <div class="node-number-badge">2</div>
-                    </div>
-                    <h4>We Calculate Your APS</h4>
-                    <p>We calculate your APS score instantly and accurately.</p>
-                </div>
-                <div class="flow-node">
-                    <div class="flow-icon-outer">
-                        <i class="fas fa-graduation-cap"></i>
-                        <div class="node-number-badge">3</div>
-                    </div>
-                    <h4>See What You Qualify For</h4>
-                    <p>View all universities and programmes you qualify for.</p>
-                </div>
-            </div>
-
-            <!-- Value Statistics Banner Strip Row Layout Grid -->
-            <div class="features-value-strip">
-                <div class="value-card">
-                    <div class="value-card-icon"><i class="fas fa-university"></i></div>
-                    <div class="value-card-info">
-                        <h4>26+</h4>
-                        <p>Universities</p>
-                    </div>
-                </div>
-                <div class="value-card">
-                    <div class="value-card-icon"><i class="fas fa-book"></i></div>
-                    <div class="value-card-info">
-                        <h4>Thousands</h4>
-                        <p>of Programmes</p>
-                    </div>
-                </div>
-                <div class="value-card">
-                    <div class="value-card-icon"><i class="fas fa-check-circle"></i></div>
-                    <div class="value-card-info">
-                        <h4>100%</h4>
-                        <p>Free</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Bottom Closing Sub-action Interface Shell Block -->
-            <div class="footer-action-shell">
-                <h3>Your Future Starts With One Step</h3>
-                <p>Don't guess your options. Know what you qualify for. It's fast, accurate and completely free.</p>
-                
-                <a href="#" class="cta-btn" style="padding: 14px 40px;">Find My Courses Now <i class="fas fa-arrow-right"></i></a>
-                
-                <div class="footer-verified-tag">
-                    <i class="fas fa-check-circle"></i> Trusted by thousands of South African students
-                </div>
-            </div>
-
-        </div>
-    </div>
-
+        </section>
+        
+        <h2 class="section-title">How It Works</h2>
+        <section class="process-flow">
+            </section>
+    </main>
 </body>
 </html>
-
