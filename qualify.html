@@ -1,1 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QualifySA - View Results Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Modern CSS Custom Property Framework */
+        :root {
+            --brand-primary: #1c64f2;
+            --brand-primary-light: #eff6ff;
+            --brand-primary-hover: #1a56cc;
+            --status-success: #10b981;
+            
+            --neutral-darkest: #0f172a;
+            --neutral-dark: #334155;
+            --neutral-muted: #64748b;
+            --neutral-light-gray: #94a3b8;
+            --neutral-border: #e2e8f0;
+            --neutral-bg-surface: #f8fafc;
+            --neutral-white: #ffffff;
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            
+            --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Reset & Base Foundation Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            background-color: #fafbfc;
+            color: var(--neutral-darkest);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Top Application Shell Header Navigation Layout */
+        .app-navbar {
+            width: 100%;
+            background: var(--neutral-white);
+            border-bottom: 1px solid var(--neutral-border);
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar-container {
+            width: 100%;
+            max-width: 1280px;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 800;
+            font-size: 1.45rem;
+            color: var(--neutral-darkest);
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        .navbar-brand i {
+            color: var(--brand-primary);
+            font-size: 1.35rem;
+        }
+
+        .navbar-brand span {
+            color: var(--brand-primary);
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .navbar-link {
+            text-decoration: none;
+            color: var(--neutral-dark);
+            font-weight: 500;
+            font-size: 0.925rem;
+            transition: var(--transition-smooth);
+        }
+
+        .navbar-link:hover, .navbar-link.active {
+            color: var(--brand-primary);
+        }
+
+        /* Core Grid Container - Controls Max Page Width Boundaries */
+        .dashboard-container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 32px 24px 64px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        /* Linear Progress Tracker Component (Multi-step Process Bar) */
+        .tracker-wrapper {
+            background: var(--neutral-white);
+            border: 1px solid var(--neutral-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tracker-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .tracker-line {
+            position: absolute;
+            top: 20px;
+            left: 5%;
+            right: 5%;
+            height: 2px;
+            background: #e2e8f0;
+            z-index: 1;
+        }
+
+        .tracker-step-node {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--neutral-white);
+            padding: 0 16px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .node-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--neutral-white);
+            border: 2px solid var(--neutral-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--neutral-muted);
+            transition: var(--transition-smooth);
+        }
+
+        .node-text-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .node-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--neutral-darkest);
+        }
+
+        .node-subtitle {
+            font-size: 0.75rem;
+            color: var(--neutral-muted);
+            margin-top: 1px;
+        }
+
+        /* Status Variant Conditions for Progress Steps */
+        .tracker-step-node.completed .node-circle {
+            background: var(--brand-primary);
+            border-color: var(--brand-primary);
+            color: var(--neutral-white);
+        }
+
+        .tracker-step-node.active .node-circle {
+            background: var(--brand-primary-light);
+            border-color: var(--brand-primary);
+            color: var(--brand-primary);
+        }
+
+        /* Overview Summary Banner Header Component */
+        .summary-banner {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 24px;
+            align-items: center;
+            background: var(--neutral-white);
+            border: 1px solid var(--neutral-border);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .banner-msg-column h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--neutral-darkest);
+            letter-spacing: -0.75px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .banner-msg-column p {
+            font-size: 1rem;
+            color: var(--neutral-muted);
+            line-height: 1.5;
+            max-width: 600px;
+        }
+
+        .banner-metrics-row {
+            display: flex;
+            gap: 16px;
+        }
+
+        .metric-pill-box {
+            background: var(--neutral-white);
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.02);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            min-width: 150px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .metric-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--neutral-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .metric-header i {
+            color: var(--brand-primary);
+            font-size: 0.85rem;
+        }
+
+        .metric-val {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1;
+        }
+
+        .metric-val.colored-accent {
+            color: var(--brand-primary);
+        }
+
+        .metric-val.success-accent {
+            color: var(--status-success);
+        }
+
+        .metric-val.purple-accent {
+            color: #7c3aed;
+        }
+
+        .metric-footer-note {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--neutral-muted);
+            margin-top: 8px;
+        }
+
+        /* Secondary Dashboard Section Grid Split Blueprint Layout */
+        .main-dashboard-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 32px;
+            align-items: flex-start;
+        }
+
+        /* Left Side Column Panel Widgets Shell */
+        .sidebar-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .sidebar-widget-card {
+            background: var(--neutral-white);
+            border: 1px solid var(--neutral-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .widget-heading {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--neutral-darkest);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .widget-heading i {
+            color: var(--brand-primary);
+        }
+
+        /* Subject Marks Data Table List View Layout */
+        .subject-scores-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .score-row-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .score-row-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .subject-title-lbl {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--neutral-dark);
+            max-width: 190px;
+            line-height: 1.3;
+        }
+
+        .subject-percentage-val {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--neutral-darkest);
+        }
+
+        /* Educational Information Widget Callout Box UI Section */
+        .info-callout-box {
+            background: var(--brand-primary-light);
+            border: 1px solid #dbeafe;
+        }
+
+        .info-callout-box .widget-heading {
+            color: var(--brand-primary);
+            margin-bottom: 12px;
+        }
+
+        .info-callout-box p {
+            font-size: 0.825rem;
+            color: #1e40af;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        .info-inline-action-btn {
+            font-size: 0.825rem;
+            font-weight: 700;
+            color: var(--brand-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition-smooth);
+        }
+
+        .info-inline-action-btn:hover {
+            color: var(--brand-primary-hover);
+        }
+
+        /* Sharing Utility Widget Action Button Component Structure */
+        .share-widget p {
+            font-size: 0.825rem;
+            color: var(--neutral-muted);
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .utility-share-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--neutral-white);
+            border: 1px solid var(--neutral-border);
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--neutral-darkest);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: var(--transition-smooth);
+        }
+
+        .utility-share-btn:hover {
+            background: var(--neutral-bg-surface);
+            border-color: var(--neutral-light-gray);
+        }
+
+        /* Right Content Panel - Universities Filtering and Results Table Grid */
+        .results-main-display-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Segmented Core Navigation Controls Header Bar Layout Component */
+        .tab-navigation-bar {
+            display: flex;
+            gap: 32px;
+            border-bottom: 2px solid var(--neutral-border);
+            padding-bottom: 2px;
+        }
+
+        .tab-trigger-item {
+            background: none;
+            border: none;
+            padding-bottom: 12px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--neutral-muted);
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition-smooth);
+        }
+
+        .tab-trigger-item:hover {
+            color: var(--neutral-darkest);
+        }
+
+        .tab-trigger-item.is-selected {
+            color: var(--brand-primary);
+        }
+
+        .tab-trigger-item.is-selected::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--brand-primary);
+            border-radius: 2px;
+        }
+
+        /* Interactive Filter Dropdowns Action Panel Container */
+        .filter-controls-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.5fr;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .custom-select-field {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--neutral-white);
+            border: 1px solid var(--neutral-border);
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--neutral-darkest);
+            outline: none;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C0/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 16px;
+            transition: var(--transition-smooth);
+        }
+
+        .custom-select-field:focus {
+            border-color: var(--brand-primary);
+            box-shadow: 0 0 0 3px rgba(28, 100, 242, 0.15);
+        }
+
+        .search-input-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-input-wrapper i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--neutral-muted);
+            font-size: 0.9rem;
+        }
+
+        .search-input-control {
+            width: 100%;
+            padding: 12px 16px 12px 44px;
+            background: var(--neutral-white);
+            border: 1px solid var(--neutral-border);
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--neutral-darkest);
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .search-input-control::placeholder {
+            color: var(--neutral-light-gray);
+        }
+
+        .search-input-control:focus {
+            border-color: var(--brand-primary);
+            box-shadow: 0 0 0 3px rgba(28, 100, 242, 0.15);
+        }
+
+        /* Main Institutional Results Feed (Vertical Stack Layout) */
+        .institutions-results-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Individual University Entry Card Component Rows */
+        .institution-row-card {
+            background: var(--neutral-white);
+            border: 1px solid var(--neutral-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            display: grid;
+            grid-template-columns: auto 1fr auto auto;
+            gap: 24px;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+        }
+
+        .institution-row-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: #cbd5e1;
+        }
+
+        /* Branding Logomark Circular/Square Shield Shell */
+        .brand-logo-shield {
+            width: 64px;
+            height: 64px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--neutral-bg-surface);
+            border: 1px solid #f1f5f9;
+        }
+
+        .brand-logo-shield img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Institutional Metadata Block Construction */
+        .institution-meta-block {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .institution-title-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--neutral-darkest);
+            letter-spacing: -0.25px;
+        }
+
+        .institution-badges-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .meta-tag-pill {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.725rem;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+
+        /* Color-coded variation tags for public/private and geographical zones */
+        .meta-tag-pill.type-badge {
+            background: #f1f5f9;
+            color: var(--neutral-dark);
+        }
+
+        .meta-tag-pill.region-badge {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .qualification-count-lbl {
+            font-size: 0.8rem;
+            color: var(--neutral-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        /* Dynamic System Requirements Comparative Logic Numbers Display Container */
+        .aps-requirement-comparison-box {
+            text-align: right;
+            padding-right: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .req-lbl-title {
+            font-size: 0.725rem;
+            color: var(--neutral-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .req-score-numeric-display {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 2px 0;
+        }
+
+        .user-calculated-comparison-status {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--status-success);
+        }
+
+        /* Navigation Execution Elements Column Button */
+        .action-routing-trigger-btn {
+            padding: 12px 20px;
+            background: var(--neutral-white);
+            border: 1px solid var(--neutral-border);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--brand-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .action-routing-trigger-btn:hover {
+            background: var(--brand-primary);
+            color: var(--neutral-white);
+            border-color: var(--brand-primary);
+        }
+
+        /* Bottom Carousel Slider Module Segment: qualified courses breakdown */
+        .horizontal-carousel-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 16px;
+        }
+
+        .carousel-header-panel {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .carousel-headline {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--neutral-darkest);
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .carousel-headline i {
+            color: #7c3aed;
+        }
+
+        .carousel-view-all-link {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--brand-primary);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .carousel-view-all-link:hover {
+            color: var(--brand-primary-hover);
+        }
+
+        /* Outer Frame with Navigation Arrows Control Layout */
+        .carousel-viewport-slider-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+        }
+
+        .carousel-track-wrapper {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(220px, 1fr));
+            gap: 16px;
+            width: 100%;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 4px 0;
+        }
+
+        .carousel-track-wrapper::-webkit-scrollbar {
+            display: none; /* Hide standard structural scrollbars for visual fidelity */
+        }
+
+        .carousel-arrow-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--neutral-white);
+            border: 1px solid var(--neutral-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-dark);
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+            z-index: 10;
+        }
+
+        .carousel-arrow-btn:hover {
+            background: var(--neutral-bg-surface);
+            color: var(--brand-primary);
+        }
+
+        /* Inside Content Structural Unit Card Element Frame */
+        .programme-showcase-node {
+            background: var(--neutral-white);
+            border: 1px solid var(--neutral-border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 170px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+        }
+
+        .programme-showcase-node:hover {
+            border-color: #cbd5e1;
+            box-shadow: var(--shadow-md);
+        }
+
+        .programme-meta-top h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--neutral-darkest);
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+
+        .programme-meta-top p {
+            font-size: 0.75rem;
+            color: var(--neutral-muted);
+            font-weight: 500;
+        }
+
+        .programme-status-footer {
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .badge-score-pill-row {
+            font-size: 0.725rem;
+            font-weight: 700;
+            background: var(--neutral-bg-surface);
+            color: var(--neutral-dark);
+            padding: 4px 8px;
+            border-radius: 4px;
+            width: fit-content;
+        }
+
+        .system-status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--status-success);
+        }
+
+        /* Banner Box Strip Bottom Segment */
+        .action-banner-footer {
+            width: 100%;
+            background: #f0f7ff;
+            border: 1px solid #cce3ff;
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+        }
+
+        .footer-banner-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-banner-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--brand-primary);
+            color: var(--neutral-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .footer-banner-text-group h2 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--neutral-darkest);
+            letter-spacing: -0.4px;
+            margin-bottom: 4px;
+        }
+
+        .footer-banner-text-group p {
+            font-size: 0.925rem;
+            color: var(--neutral-dark);
+            font-weight: 500;
+        }
+
+        .footer-banner-action-btn {
+            padding: 16px 32px;
+            background: var(--brand-primary);
+            color: var(--neutral-white);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(28, 100, 242, 0.3);
+            transition: var(--transition-smooth);
+            white-space: nowrap;
+        }
+
+        .footer-banner-action-btn:hover {
+            background: var(--brand-primary-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Fluid Design Media Breakpoints System Architecture */
+        @media (max-width: 1140px) {
+            .main-dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-stack {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .summary-banner {
+                grid-template-columns: 1fr;
+                padding: 32px;
+            }
+            .banner-metrics-row {
+                justify-content: flex-start;
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 8px;
+            }
+            .metric-pill-box {
+                flex-shrink: 0;
+                width: calc(33.33% - 11px);
+                min-width: 140px;
+            }
+            .institution-row-card {
+                grid-template-columns: auto 1fr;
+                gap: 20px;
+            }
+            .aps-requirement-comparison-box {
+                text-align: left;
+                padding-right: 0;
+                grid-column: 2;
+            }
+            .action-routing-trigger-btn {
+                grid-column: 1 / -1;
+                justify-content: center;
+            }
+            .filter-controls-row {
+                grid-template-columns: 1fr;
+            }
+            .action-banner-footer {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+                align-items: center;
+            }
+            .footer-banner-left {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .footer-banner-action-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tracker-steps {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                padding-left: 20px;
+            }
+            .tracker-line {
+                left: 39px;
+                top: 20px;
+                bottom: 20px;
+                width: 2px;
+                height: calc(100% - 40px);
+            }
+            .tracker-step-node {
+                padding: 4px 0;
+            }
+            .sidebar-stack {
+                grid-template-columns: 1fr;
+            }
+            .carousel-track-wrapper {
+                grid-template-columns: repeat(5, minmax(190px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="app-navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand">
+                <i class="fas fa-graduation-cap"></i> Qualify<span>SA</span>
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="#" class="navbar-link">Home</a></li>
+                <li><a href="#" class="navbar-link active">Universities</a></li>
+                <li><a href="#" class="navbar-link">Courses</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        
+        <div class="tracker-wrapper">
+            <div class="tracker-steps">
+                <div class="tracker-line"></div>
+                
+                <div class="tracker-step-node completed">
+                    <div class="node-circle"><i class="fas fa-check"></i></div>
+                    <div class="node-text-group">
+                        <div class="node-title">Enter Marks</div>
+                        <div class="node-subtitle">Completed</div>
+                    </div>
+                </div>
+
+                <div class="tracker-step-node active">
+                    <div class="node-circle">2</div>
+                    <div class="node-text-group">
+                        <div class="node-title">View Results</div>
+                        <div class="node-subtitle">You are here</div>
+                    </div>
+                </div>
+
+                <div class="tracker-step-node">
+                    <div class="node-circle">3</div>
+                    <div class="node-text-group">
+                        <div class="node-title">Explore Options</div>
+                        <div class="node-subtitle">Next step</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="summary-banner">
+            <div class="banner-msg-column">
+                <h1>Great News! 🎉</h1>
+                <p>Based on your marks, here are the universities and programmes you qualify for.</p>
+            </div>
+            
+            <div class="banner-metrics-row">
+                <div class="metric-pill-box">
+                    <div class="metric-header"><i class="fas fa-graduation-cap"></i> Your APS Score</div>
+                    <div class="metric-val colored-accent">34</div>
+                    <div class="metric-footer-note">Good Job!</div>
+                </div>
+                <div class="metric-pill-box">
+                    <div class="metric-header"><i class="fas fa-university"></i> Universities</div>
+                    <div class="metric-val success-accent">12</div>
+                    <div class="metric-footer-note">You Qualify For</div>
+                </div>
+                <div class="metric-pill-box">
+                    <div class="metric-header"><i class="fas fa-book-open"></i> Programmes</div>
+                    <div class="metric-val purple-accent">84</div>
+                    <div class="metric-footer-note">You Qualify For</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-dashboard-grid">
+            
+            <div class="sidebar-stack">
+                
+                <div class="sidebar-widget-card">
+                    <div class="widget-heading">
+                        <i class="far fa-file-alt"></i> Your Subjects & Marks
+                    </div>
+                    <div class="subject-scores-list">
+                        <div class="score-row-item">
+                            <span class="subject-title-lbl">English Home Language</span>
+                            <span class="subject-percentage-val">72%</span>
+                        </div>
+                        <div class="score-row-item">
+                            <span class="subject-title-lbl">Mathematics</span>
+                            <span class="subject-percentage-val">68%</span>
+                        </div>
+                        <div class="score-row-item">
+                            <span class="subject-title-lbl">Life Orientation</span>
+                            <span class="subject-percentage-val">80%</span>
+                        </div>
+                        <div class="score-row-item">
+                            <span class="subject-title-lbl">Accounting</span>
+                            <span class="subject-percentage-val">75%</span>
+                        </div>
+                        <div class="score-row-item">
+                            <span class="subject-title-lbl">Business Studies</span>
+                            <span class="subject-percentage-val">70%</span>
+                        </div>
+                        <div class="score-row-item">
+                            <span class="subject-title-lbl">Economics</span>
+                            <span class="subject-percentage-val">65%</span>
+                        </div>
+                        <div class="score-row-item">
+                            <span class="subject-title-lbl">Afrikaans First Additional Language</span>
+                            <span class="subject-percentage-val">60%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-widget-card info-callout-box">
+                    <div class="widget-heading">
+                        <i class="fas fa-info-circle"></i> What is APS?
+                    </div>
+                    <p>APS (Admission Point Score) is used by universities to determine admission to degree programmes.</p>
+                    <a href="#" class="info-inline-action-btn">Learn more about APS <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="sidebar-widget-card share-widget">
+                    <div class="widget-heading">
+                        <i class="fas fa-share-alt"></i> Share Your Results
+                    </div>
+                    <p>Share your results with friends and get their opinion!</p>
+                    <button class="utility-share-btn">
+                        <span>Share Now</span> <i class="fas fa-external-link-alt"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="results-main-display-panel">
+                
+                <div class="tab-navigation-bar">
+                    <button class="tab-trigger-item is-selected">
+                        <i class="fas fa-university"></i> Universities (12)
+                    </button>
+                    <button class="tab-trigger-item">
+                        <i class="fas fa-book-open"></i> Programmes (84)
+                    </button>
+                </div>
+
+                <div class="filter-controls-row">
+                    <select class="custom-select-field">
+                        <option>All Provinces</option>
+                        <option>Gauteng</option>
+                        <option>Western Cape</option>
+                        <option>KwaZulu-Natal</option>
+                    </select>
+                    
+                    <select class="custom-select-field">
+                        <option>All University Types</option>
+                        <option>Public University</option>
+                        <option>University of Technology</option>
+                    </select>
+
+                    <div class="search-input-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" class="search-input-control" placeholder="Search universities...">
+                    </div>
+                </div>
+
+                <div class="institutions-results-feed">
+                    
+                    <div class="institution-row-card">
+                        <div class="brand-logo-shield" style="background-color: #ea580c;">
+                            <i class="fas fa-university" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <div class="institution-meta-block">
+                            <div class="institution-title-text">University of Johannesburg</div>
+                            <div class="institution-badges-row">
+                                <span class="meta-tag-pill type-badge">Public University</span>
+                                <span class="meta-tag-pill region-badge">Gauteng</span>
+                            </div>
+                            <div class="qualification-count-lbl">You qualify for 18 programmes</div>
+                        </div>
+                        <div class="aps-requirement-comparison-box">
+                            <div class="req-lbl-title">APS Required</div>
+                            <div class="req-score-numeric-display">30</div>
+                            <div class="user-calculated-comparison-status">Your APS: 34</div>
+                        </div>
+                        <a href="#" class="action-routing-trigger-btn">
+                            <span>View Programmes</span> <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="institution-row-card">
+                        <div class="brand-logo-shield" style="background-color: #dc2626;">
+                            <i class="fas fa-graduation-cap" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <div class="institution-meta-block">
+                            <div class="institution-title-text">University of Pretoria</div>
+                            <div class="institution-badges-row">
+                                <span class="meta-tag-pill type-badge">Public University</span>
+                                <span class="meta-tag-pill region-badge">Gauteng</span>
+                            </div>
+                            <div class="qualification-count-lbl">You qualify for 16 programmes</div>
+                        </div>
+                        <div class="aps-requirement-comparison-box">
+                            <div class="req-lbl-title">APS Required</div>
+                            <div class="req-score-numeric-display">32</div>
+                            <div class="user-calculated-comparison-status">Your APS: 34</div>
+                        </div>
+                        <a href="#" class="action-routing-trigger-btn">
+                            <span>View Programmes</span> <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="institution-row-card">
+                        <div class="brand-logo-shield" style="background-color: #7c3aed;">
+                            <i class="fas fa-book" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <div class="institution-meta-block">
+                            <div class="institution-title-text">North-West University</div>
+                            <div class="institution-badges-row">
+                                <span class="meta-tag-pill type-badge">Public University</span>
+                                <span class="meta-tag-pill region-badge">North West</span>
+                            </div>
+                            <div class="qualification-count-lbl">You qualify for 14 programmes</div>
+                        </div>
+                        <div class="aps-requirement-comparison-box">
+                            <div class="req-lbl-title">APS Required</div>
+                            <div class="req-score-numeric-display">28</div>
+                            <div class="user-calculated-comparison-status">Your APS: 34</div>
+                        </div>
+                        <a href="#" class="action-routing-trigger-btn">
+                            <span>View Programmes</span> <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="institution-row-card">
+                        <div class="brand-logo-shield" style="background-color: #0284c7;">
+                            <i class="fas fa-microscope" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <div class="institution-meta-block">
+                            <div class="institution-title-text">Tshwane University of Technology</div>
+                            <div class="institution-badges-row">
+                                <span class="meta-tag-pill type-badge">Public University</span>
+                                <span class="meta-tag-pill region-badge">Gauteng</span>
+                            </div>
+                            <div class="qualification-count-lbl">You qualify for 10 programmes</div>
+                        </div>
+                        <div class="aps-requirement-comparison-box">
+                            <div class="req-lbl-title">APS Required</div>
+                            <div class="req-score-numeric-display">26</div>
+                            <div class="user-calculated-comparison-status">Your APS: 34</div>
+                        </div>
+                        <a href="#" class="action-routing-trigger-btn">
+                            <span>View Programmes</span> <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="institution-row-card">
+                        <div class="brand-logo-shield" style="background-color: #db2777;">
+                            <i class="fas fa-award" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <div class="institution-meta-block">
+                            <div class="institution-title-text">University of the Free State</div>
+                            <div class="institution-badges-row">
+                                <span class="meta-tag-pill type-badge">Public University</span>
+                                <span class="meta-tag-pill region-badge">Free State</span>
+                            </div>
+                            <div class="qualification-count-lbl">You qualify for 8 programmes</div>
+                        </div>
+                        <div class="aps-requirement-comparison-box">
+                            <div class="req-lbl-title">APS Required</div>
+                            <div class="req-score-numeric-display">28</div>
+                            <div class="user-calculated-comparison-status">Your APS: 34</div>
+                        </div>
+                        <a href="#" class="action-routing-trigger-btn">
+                            <span>View Programmes</span> <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="institution-row-card">
+                        <div class="brand-logo-shield" style="background-color: #0f172a;">
+                            <i class="fas fa-landmark" style="color: white; font-size: 1.5rem;"></i>
+                        </div>
+                        <div class="institution-meta-block">
+                            <div class="institution-title-text">University of Cape Town</div>
+                            <div class="institution-badges-row">
+                                <span class="meta-tag-pill type-badge">Public University</span>
+                                <span class="meta-tag-pill region-badge">Western Cape</span>
+                            </div>
+                            <div class="qualification-count-lbl">You qualify for 6 programmes</div>
+                        </div>
+                        <div class="aps-requirement-comparison-box">
+                            <div class="req-lbl-title">APS Required</div>
+                            <div class="req-score-numeric-display">33</div>
+                            <div class="user-calculated-comparison-status">Your APS: 34</div>
+                        </div>
+                        <a href="#" class="action-routing-trigger-btn">
+                            <span>View Programmes</span> <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <section class="horizontal-carousel-section">
+            <div class="carousel-header-panel">
+                <h2 class="carousel-headline"><i class="far fa-star"></i> Top Programmes You Qualify For</h2>
+                <a href="#" class="carousel-view-all-link">View all 84 programmes &rarr;</a>
+            </div>
+
+            <div class="carousel-viewport-slider-container">
+                <button class="carousel-arrow-btn"><i class="fas fa-chevron-left"></i></button>
+                
+                <div class="carousel-track-wrapper">
+                    <div class="programme-showcase-node">
+                        <div class="programme-meta-top">
+                            <h3>BCom Accounting</h3>
+                            <p>University of Johannesburg</p>
+                        </div>
+                        <div class="programme-status-footer">
+                            <div class="badge-score-pill-row">APS 30</div>
+                            <div class="system-status-indicator"><i class="fas fa-check-circle"></i> You Qualify</div>
+                        </div>
+                    </div>
+
+                    <div class="programme-showcase-node">
+                        <div class="programme-meta-top">
+                            <h3>BSc Information Technology</h3>
+                            <p>University of Pretoria</p>
+                        </div>
+                        <div class="programme-status-footer">
+                            <div class="badge-score-pill-row">APS 32</div>
+                            <div class="system-status-indicator"><i class="fas fa-check-circle"></i> You Qualify</div>
+                        </div>
+                    </div>
+
+                    <div class="programme-showcase-node">
+                        <div class="programme-meta-top">
+                            <h3>BA Psychology</h3>
+                            <p>North-West University</p>
+                        </div>
+                        <div class="programme-status-footer">
+                            <div class="badge-score-pill-row">APS 28</div>
+                            <div class="system-status-indicator"><i class="fas fa-check-circle"></i> You Qualify</div>
+                        </div>
+                    </div>
+
+                    <div class="programme-showcase-node">
+                        <div class="programme-meta-top">
+                            <h3>BCom Financial Management</h3>
+                            <p>Tshwane University of Technology</p>
+                        </div>
+                        <div class="programme-status-footer">
+                            <div class="badge-score-pill-row">APS 26</div>
+                            <div class="system-status-indicator"><i class="fas fa-check-circle"></i> You Qualify</div>
+                        </div>
+                    </div>
+
+                    <div class="programme-showcase-node">
+                        <div class="programme-meta-top">
+                            <h3>Bachelor of Law (LLB)</h3>
+                            <p>University of the Free State</p>
+                        </div>
+                        <div class="programme-status-footer">
+                            <div class="badge-score-pill-row">APS 28</div>
+                            <div class="system-status-indicator"><i class="fas fa-check-circle"></i> You Qualify</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-arrow-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <footer class="action-banner-footer">
+            <div class="footer-banner-left">
+                <div class="footer-banner-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="footer-banner-text-group">
+                    <h2>Your Future Starts Now!</h2>
+                    <p>You have many great options. Choose your path and make it happen.</p>
+                </div>
+            </div>
+            <a href="#" class="footer-banner-action-btn">Explore Programmes &rarr;</a>
+        </footer>
+
+    </div>
+
+</body>
+</html>
 
