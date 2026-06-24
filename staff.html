@@ -1,1 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QualifySA - Enter Your Marks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1c64f2;
+            --primary-light: #eff6ff;
+            --bg: #ffffff;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+        
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Inter', sans-serif; 
+        }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            padding-bottom: 80px;
+            overflow-x: hidden; /* Prevents any accidental micro-scrolling layout shifts */
+        }
+
+        /* Header Navigation */
+        header { 
+            padding: 20px 40px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            border-bottom: 1px solid #f1f5f9;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .logo { 
+            font-weight: 800; 
+            font-size: 1.3rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: #0f172a;
+        }
+        .nav { 
+            display: flex; 
+            gap: 24px; 
+            font-weight: 500; 
+            font-size: 0.95rem; 
+        }
+        .nav span { cursor: pointer; color: #0f172a; }
+        .nav span.active { font-weight: 600; }
+
+        /* Main Container */
+        .container { 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            width: 100%;
+        }
+
+        /* Stepper Link Progress */
+        .stepper { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            margin: 40px 0; 
+            width: 100%;
+        }
+        .step { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            position: relative;
+        }
+        .step-content {
+            display: flex;
+            flex-direction: column;
+        }
+        .step-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+        .step.active .step-title {
+            color: var(--text-main);
+        }
+        .step-sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .step-circle { 
+            width: 32px; 
+            height: 32px; 
+            border-radius: 50%; 
+            background: #e2e8f0; 
+            color: var(--text-muted); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: 600; 
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .step.completed .step-circle {
+            background: var(--primary);
+            color: white;
+        }
+        .step-line {
+            flex-grow: 1;
+            height: 1px;
+            background: var(--border);
+            max-width: 120px;
+            margin: 0 16px;
+        }
+
+        /* Feature Header Banner */
+        .banner-card {
+            background-color: #f3f7ff;
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin-bottom: 40px;
+            border: 1px solid #eef2ff;
+        }
+        .banner-card h1 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .banner-card p {
+            color: #475569;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        /* Fluid Main Layout Architecture */
+        .main-layout { 
+            display: grid; 
+            grid-template-columns: 1.6fr 1fr; 
+            gap: 30px; 
+            align-items: start; 
+            width: 100%;
+        }
+
+        /* UI Content Containers */
+        .ui-card { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border); 
+            border-radius: 16px; 
+            padding: 30px; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            width: 100%;
+        }
+        .card-title { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            font-weight: 700; 
+            font-size: 1.1rem;
+            margin-bottom: 25px; 
+            color: #0f172a;
+        }
+        .card-title i {
+            color: #2563eb;
+        }
+
+        /* Mark Assessment Matrix Data Rows */
+        .subjects-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .subjects-table th {
+            text-align: left;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #0f172a;
+            padding: 12px 16px;
+            background-color: #f8fafc;
+        }
+        .subjects-table th:last-child {
+            text-align: right;
+            padding-right: 16px;
+        }
+        .subjects-table td {
+            padding: 16px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.95rem;
+            color: #334155;
+        }
+        .subject-input-cell {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+        .edit-icon {
+            color: #3b82f6;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .mark-input {
+            width: 75px;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #0f172a;
+            outline: none;
+        }
+        .mark-input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Drop Append Target Block Area */
+        .add-zone {
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            background-color: #f8fafc;
+        }
+        .btn-plus {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: #dbeafe;
+            color: var(--primary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .add-zone h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .add-zone p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        
+        /* Inline Autocomplete Field */
+        .search-container {
+            position: relative;
+            max-width: 460px;
+            margin: 0 auto;
+            text-align: left;
+            width: 100%;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 12px 16px;
+            padding-left: 40px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: #fff;
+            font-size: 0.95rem;
+            outline: none;
+        }
+        .search-container .fa-search {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .search-container .fa-chevron-up {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        .search-dropdown {
+            margin-top: 4px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .dropdown-row {
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            color: #334155;
+            cursor: pointer;
+            border-bottom: 1px solid #f8fafc;
+        }
+        .dropdown-row:last-child { border-bottom: none; }
+        .dropdown-row:hover { background-color: #f1f5f9; }
+
+        /* Secondary Data Right Sidebar Stack Column */
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            width: 100%;
+        }
+        
+        /* Micro Counter Progress Module */
+        .calc-card { text-align: center; }
+        .radial-progress-container {
+            position: relative;
+            width: 170px;
+            height: 170px;
+            margin: 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, #94a3b8 0%, #64748b 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 0 12px #eff6ff, 0 0 0 13px #dbeafe;
+        }
+        .radial-inner-value {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: white;
+        }
+        .calc-instruction {
+            color: #334155;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-top: 15px;
+            padding: 0 10px;
+        }
+        .color-span { color: #b45309; font-weight: 500; }
+        .pct-span { color: #15803d; font-weight: 500; }
+
+        /* Information Tip Block */
+        .info-card {
+            background: #f0f7ff;
+            border: 1px solid #e0f2fe;
+            border-radius: 16px;
+            padding: 24px;
+            width: 100%;
+        }
+        .info-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #1e3a8a;
+            margin-bottom: 12px;
+        }
+        .info-title i { color: #3b82f6; }
+        .info-card p {
+            font-size: 0.88rem;
+            color: #1e40af;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .info-card a {
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .info-card a:hover { text-decoration: underline; }
+
+        /* Viewport Breakpoints Adaptive System */
+        @media (max-width: 968px) {
+            header {
+                padding: 20px;
+            }
+            .main-layout { 
+                grid-template-columns: 1fr; 
+                gap: 24px; 
+            }
+            .stepper {
+                padding: 0 10px;
+            }
+            .step-line {
+                margin: 0 8px;
+            }
+            .banner-card {
+                padding: 30px 20px;
+            }
+            .banner-card h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            header {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+            .stepper {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+                max-width: 240px;
+                margin: 30px auto;
+            }
+            .step-line {
+                display: none; /* Strip lines on small viewports */
+            }
+            .step {
+                width: 100%;
+            }
+            .ui-card {
+                padding: 20px 16px;
+            }
+            .subjects-table td, .subjects-table th {
+                padding: 12px 8px;
+                font-size: 0.88rem;
+            }
+            .mark-input {
+                width: 65px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L1 7L12 12L21 7.75V14.5H23V7L12 2Z" fill="#1c64f2"/><path d="M19 11.6V18.5C19 19.6 15.9 21.5 12 21.5C8.1 21.5 5 19.6 5 18.5V11.6L12 15L19 11.6Z" fill="#1c64f2"/></svg>
+        QualifySA
+    </div>
+    <div class="nav">
+        <span>Home</span>
+        <span class="active">Universities</span>
+        <span>Courses</span>
+    </div>
+</header>
+
+<div class="container">
+    <div class="stepper">
+        <div class="step completed">
+            <div class="step-circle"><i class="fas fa-check"></i></div>
+            <div class="step-content">
+                <span class="step-title">Enter Marks</span>
+                <span class="step-sub">Completed</span>
+            </div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+            <div class="step-circle" style="border:1px solid #1c64f2; background:#fff; color:#1c64f2;">2</div>
+            <div class="step-content">
+                <span class="step-title">View Results</span>
+                <span class="step-sub">You are here</span>
+            </div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step current">
+            <div class="step-circle">3</div>
+            <div class="step-content">
+                <span class="step-title">Explore Options</span>
+                <span class="step-sub">Next step</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="banner-card">
+        <h1>Enter Your Marks to See Your Future! 🪅</h1>
+        <p>Based on your mark, here are the universities and programmes you qualify for.</p>
+    </div>
+
+    <div class="main-layout">
+        
+        <div class="ui-card">
+            <div class="card-title">
+                <i class="far fa-clipboard"></i> Add Your Grade 12 Subjects & Marks
+            </div>
+            
+            <table class="subjects-table">
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Marks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>English Home Language</td>
+                        <td>
+                            <div class="subject-input-cell">
+                                <i class="fas fa-pencil-alt edit-icon"></i>
+                                <input type="text" class="mark-input" value="72%">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Mathematics</td>
+                        <td>
+                            <div class="subject-input-cell">
+                                <i class="fas fa-pencil-alt edit-icon"></i>
+                                <input type="text" class="mark-input">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Life Orientation</td>
+                        <td>
+                            <div class="subject-input-cell">
+                                <i class="fas fa-pencil-alt edit-icon"></i>
+                                <input type="text" class="mark-input">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Accounting</td>
+                        <td>
+                            <div class="subject-input-cell">
+                                <i class="fas fa-pencil-alt edit-icon"></i>
+                                <input type="text" class="mark-input">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="add-zone">
+                <div class="btn-plus"><i class="fas fa-plus"></i></div>
+                <h3>Add New Subject</h3>
+                <p>Select common South African subjects, such as:</p>
+                
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" class="search-bar" placeholder="Search subjects...">
+                    <i class="fas fa-chevron-up"></i>
+                    
+                    <div class="search-dropdown">
+                        <div class="dropdown-row">Business Studies</div>
+                        <div class="dropdown-row">Physical Sciences</div>
+                        <div class="dropdown-row">History</div>
+                        <div class="dropdown-row">Computer Applications Technology</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <div class="ui-card calc-card">
+                <div class="card-title" style="margin-bottom:10px;"><i class="fas fa-calculator"></i> Calculate Your APS</div>
+                
+                <div class="radial-progress-container">
+                    <div class="radial-inner-value">??</div>
+                </div>
+                
+                <p class="calc-instruction">
+                    Interactive circle will update with subjects in a <span class="color-span">color-coded</span> <span class="pct-span">%%</span> to add your subjects.
+                </p>
+            </div>
+
+            <div class="info-card">
+                <div class="info-title"><i class="far fa-lightbulb"></i> What is APS?</div>
+                <p>APS (Admission Point Score) is used by universities to determine admission to degree programmes.</p>
+                <a href="#">Learn more about APS <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
 
