@@ -1,1 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QualifySA - Find Every University Course You Qualify For</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1c64f2;
+            --primary-blue-hover: #1a56cc;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --light-bg: #f8fafc;
+            --border-color: #e2e8f0;
+            --pill-bg: #eff6ff;
+            --pill-text: #1d6ed0;
+            
+            --uj-orange: #ea580c;
+            --up-red: #dc2626;
+            --nwu-purple: #7c3aed;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Master wrapper matching image proportions */
+        .wrapper {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 24px 80px 24px;
+        }
+
+        /* Top Navigation Header Bar */
+        .header {
+            width: 100%;
+            max-width: 1200px;
+            height: 90px;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .brand i {
+            color: var(--primary-blue);
+            font-size: 1.4rem;
+            margin-bottom: 2px;
+        }
+
+        .brand span {
+            color: var(--primary-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.15s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Split Hero Grid Layout */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 48px;
+            align-items: center;
+            margin-top: 40px;
+            margin-bottom: 90px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .micro-badge {
+            background: var(--pill-bg);
+            color: var(--pill-text);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            width: fit-content;
+            margin-bottom: 24px;
+            border: 1px solid #dbeafe;
+            letter-spacing: 0.2px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.1rem;
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .hero-content h1 span {
+            color: var(--primary-blue);
+        }
+
+        .hero-content p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            margin-bottom: 32px;
+            max-width: 530px;
+        }
+
+        .cta-btn {
+            width: fit-content;
+            padding: 16px 36px;
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: background-color 0.15s ease, transform 0.1s ease;
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--primary-blue-hover);
+        }
+
+        .cta-btn:active {
+            transform: scale(0.99);
+        }
+
+        /* Trust/Social Proof row layout */
+        .social-proof {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 36px;
+        }
+
+        .avatar-stack {
+            display: flex;
+        }
+
+        .avatar-stack img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-left: -8px;
+            object-fit: cover;
+        }
+
+        .avatar-stack img:first-child {
+            margin-left: 0;
+        }
+
+        .social-proof-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+            max-width: 320px;
+            font-weight: 500;
+        }
+
+        /* Interactive Right Card Mockup */
+        .mockup-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .score-card {
+            width: 100%;
+            max-width: 410px;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            border: 1px solid #f1f5f9;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .result-pill {
+            align-self: center;
+            background: var(--pill-bg);
+            color: var(--pill-text);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 30px;
+            margin-bottom: 24px;
+        }
+
+        .score-block {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .score-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .score-number {
+            font-size: 4.8rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            line-height: 1;
+            margin-top: 4px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            border-top: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+            padding: 16px 0;
+            margin-bottom: 24px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stat-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--pill-bg);
+            color: var(--pill-text);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .stat-details h4 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.1;
+        }
+
+        .stat-details p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .programs-section-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .program-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .program-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            background: var(--light-bg);
+            border-radius: 10px;
+            transition: background 0.1s ease;
+        }
+
+        .program-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .program-badge {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .uj-bg { background-color: var(--uj-orange); }
+        .up-bg { background-color: var(--up-red); }
+        .nwu-bg { background-color: var(--nwu-purple); }
+
+        .program-info h5 {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+
+        .program-info p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .program-item i {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Middle "How It Works" Layout */
+        .section-title {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 40px;
+        }
+
+        .process-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            margin-bottom: 70px;
+            padding: 0 40px;
+        }
+
+        .process-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 24%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-icon-wrapper {
+            width: 64px;
+            height: 64px;
+            background: var(--pill-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--pill-text);
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            bottom: -2px;
+            left: -2px;
+            width: 22px;
+            height: 22px;
+            background: var(--pill-bg);
+            color: var(--pill-text);
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
+
+        .process-step h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .process-step p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+            font-weight: 500;
+        }
+
+        /* SVG Connecting Curve Arrows between Process Nodes */
+        .flow-arrow {
+            position: absolute;
+            top: 15px;
+            width: 20%;
+            height: 30px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .arrow-1 { left: 24%; }
+        .arrow-2 { left: 56%; }
+
+        /* Banner Value Strip Row Grid */
+        .value-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            background: var(--light-bg);
+            padding: 32px 40px;
+            border-radius: 20px;
+            margin-bottom: 90px;
+        }
+
+        .value-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .value-icon {
+            width: 48px;
+            height: 48px;
+            background: #ffffff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
+        }
+
+        .value-details h4 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.1;
+        }
+
+        .value-details p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        /* Conversion Footer Box Shell Block */
+        .bottom-cta-shell {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+        }
+
+        .bottom-cta-shell h3 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.8px;
+            margin-bottom: 12px;
+        }
+
+        .bottom-cta-shell p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            max-width: 600px;
+            font-weight: 500;
+        }
+
+        .verified-tag {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 16px;
+        }
+
+        .verified-tag i {
+            color: #10b981;
+        }
+
+        /* Adaptive Fluid Engineering Responsive Breakpoints */
+        @media (max-width: 968px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                margin-bottom: 60px;
+            }
+            .hero-content {
+                text-align: center;
+                align-items: center;
+            }
+            .mockup-container {
+                justify-content: center;
+            }
+            .process-flow {
+                flex-direction: column;
+                gap: 40px;
+                align-items: center;
+                padding: 0;
+            }
+            .process-step {
+                width: 100%;
+                max-width: 280px;
+            }
+            .flow-arrow {
+                display: none;
+            }
+            .value-strip {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 24px;
+            }
+            .bottom-cta-shell h3 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="brand">
+            <i class="fas fa-graduation-cap"></i> Qualify<span>SA</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Universities</a></li>
+            <li><a href="#">Courses</a></li>
+        </ul>
+    </header>
+
+    <div class="wrapper">
+        
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="micro-badge">
+                    100% FREE • No Sign Up • No Hidden Costs
+                </div>
+                <h1>Find Every University Course You <span>Qualify For</span></h1>
+                <p>Enter your Grade 12 subjects and marks. We'll calculate your APS and show you all the universities and programmes you qualify for.</p>
+                
+                <a href="#" class="cta-btn">Check My Results <i class="fas fa-arrow-right"></i></a>
+                
+                <div class="social-proof">
+                    <div class="avatar-stack">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Student Profile">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Student Profile">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Student Profile">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Student Profile">
+                    </div>
+                    <span class="social-proof-text">Join thousands of South African students who've already found their future.</span>
+                </div>
+            </div>
+
+            <div class="mockup-container">
+                <div class="score-card">
+                    <div class="result-pill">Example Result</div>
+                    
+                    <div class="score-block">
+                        <div class="score-label">APS Score</div>
+                        <div class="score-number">34</div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-university"></i></div>
+                            <div class="stat-details">
+                                <h4>12</h4>
+                                <p>Universities</p>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon"><i class="fas fa-book-open"></i></div>
+                            <div class="stat-details">
+                                <h4>84</h4>
+                                <p>Programmes</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sample-programs-wrapper">
+                        <div class="programs-section-title">Sample Programmes You Qualify For</div>
+                        <div class="program-list">
+                            <div class="program-item">
+                                <div class="program-meta">
+                                    <div class="program-badge uj-bg">UJ</div>
+                                    <div class="program-info">
+                                        <h5>University of Johannesburg</h5>
+                                        <p>BCom Accounting</p>
+                                    </div>
+                                </div>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <div class="program-item">
+                                <div class="program-meta">
+                                    <div class="program-badge up-bg">UP</div>
+                                    <div class="program-info">
+                                        <h5>University of Pretoria</h5>
+                                        <p>BSc Information Technology</p>
+                                    </div>
+                                </div>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <div class="program-item">
+                                <div class="program-meta">
+                                    <div class="program-badge nwu-bg">NWU</div>
+                                    <div class="program-info">
+                                        <h5>North-West University</h5>
+                                        <p>BA Psychology</p>
+                                    </div>
+                                </div>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="section-title">How It Works</h2>
+        <section class="process-flow">
+            <svg class="flow-arrow arrow-1" viewBox="0 0 100 30" fill="none" preserveAspectRatio="none">
+                <path d="M0,20 Q50,0 100,20" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,4" fill="none"/>
+            </svg>
+            <svg class="flow-arrow arrow-2" viewBox="0 0 100 30" fill="none" preserveAspectRatio="none">
+                <path d="M0,20 Q50,0 100,20" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,4" fill="none"/>
+            </svg>
+
+            <div class="process-step">
+                <div class="step-icon-wrapper">
+                    <i class="far fa-file-alt"></i>
+                    <div class="step-number">1</div>
+                </div>
+                <h4>Enter Your Marks</h4>
+                <p>Add your Grade 12 subjects and your marks.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-icon-wrapper">
+                    <i class="fas fa-calculator"></i>
+                    <div class="step-number">2</div>
+                </div>
+                <h4>We Calculate Your APS</h4>
+                <p>We calculate your APS score instantly and accurately.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-icon-wrapper">
+                    <i class="fas fa-graduation-cap"></i>
+                    <div class="step-number">3</div>
+                </div>
+                <h4>See What You Qualify For</h4>
+                <p>View all universities and programmes you qualify for.</p>
+            </div>
+        </section>
+
+        <section class="value-strip">
+            <div class="value-card">
+                <div class="value-icon"><i class="fas fa-university"></i></div>
+                <div class="value-details">
+                    <h4>26+</h4>
+                    <p>All public universities in South Africa</p>
+                </div>
+            </div>
+            <div class="value-card">
+                <div class="value-icon"><i class="fas fa-book-open"></i></div>
+                <div class="value-details">
+                    <h4>Thousands</h4>
+                    <p>Undergraduate programmes across all fields</p>
+                </div>
+            </div>
+            <div class="value-card">
+                <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="value-details">
+                    <h4>100% Free</h4>
+                    <p>No fees. No hidden costs. Always free for students.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bottom-cta-shell">
+            <h3>Your Future Starts With One Step</h3>
+            <p>Don't guess your options. Know what you qualify for. It's fast, accurate and completely free.</p>
+            
+            <a href="#" class="cta-btn" style="padding: 18px 48px;">Find My Courses Now <i class="fas fa-arrow-right"></i></a>
+            
+            <div class="verified-tag">
+                <i class="fas fa-check-circle"></i> Trusted by thousands of South African students
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
 
