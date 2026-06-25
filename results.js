@@ -175,13 +175,6 @@ searchBar.addEventListener("focus", () => {
     if (isDropdownVisible) searchDropdown.style.display = "block";
 });
 
-// Close dropdown on outside focus context execution shifts
-document.addEventListener("click", (e) => {
-    if (!e.target.closest(".search-container")) {
-        searchDropdown.style.display = "none";
-    }
-});
-
 // Toggle subject dropdown visibility and rotate chevron (V vs ^)
 chevronIcon.addEventListener("click", () => {
     isDropdownVisible = !isDropdownVisible;
