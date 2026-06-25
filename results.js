@@ -182,6 +182,18 @@ document.addEventListener("click", (e) => {
     }
 });
 
+// Toggle subject dropdown visibility and rotate chevron (V vs ^)
+chevronIcon.addEventListener("click", () => {
+    isDropdownVisible = !isDropdownVisible;
+    if (isDropdownVisible) {
+        searchDropdown.style.display = "block";
+        chevronIcon.className = "fas fa-chevron-up";
+    } else {
+        searchDropdown.style.display = "none";
+        chevronIcon.className = "fas fa-chevron-down";
+    }
+});
+
 // Execute immediate processing rerouting destination patterns matching rules
 checkResultsBtn.addEventListener("click", () => {
     window.location.href = "results.html";
