@@ -23,6 +23,7 @@ let currentSubjects = {
 // DOM Element Selectors
 const tbody = document.querySelector(".subjects-table tbody");
 const searchBar = document.querySelector(".search-bar");
+const chevronIcon = document.getElementById("toggleDropdownChevron");
 const searchDropdown = document.querySelector(".search-dropdown");
 const radialValue = document.querySelector(".radial-inner-value");
 const checkResultsBtn = document.getElementById("checkResultsBtn");
