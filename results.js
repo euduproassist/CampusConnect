@@ -175,6 +175,15 @@ searchBar.addEventListener("focus", () => {
     if (isDropdownVisible) searchDropdown.style.display = "block";
 });
 
+// Close dropdown if clicking outside the search container, but ignore clicks on the chevron itself
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-container") && e.target !== chevronIcon) {
+        isDropdownVisible = false;
+        searchDropdown.style.display = "none";
+        chevronIcon.className = "fas fa-chevron-down";
+    }
+});
+
 // Toggle subject dropdown visibility and rotate chevron (V vs ^)
 chevronIcon.addEventListener("click", () => {
     isDropdownVisible = !isDropdownVisible;
