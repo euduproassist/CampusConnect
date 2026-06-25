@@ -1,8 +1,8 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /user_marks/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
+    match /user_marks/{document} {
+      allow read, write: if true;
     }
   }
 }
