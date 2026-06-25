@@ -154,6 +154,27 @@ function renderSearchDropdown(list) {
     });
 }
 
+// Monitor inputs from user actions inside the input filter field
+searchBar.addEventListener("input", (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    if (query === "") {
+        renderSearchDropdown(availableSubjects);
+        if (isDropdownVisible) searchDropdown.style.display = "block";
+        return;
+    }
+    const filtered = availableSubjects.filter(s => s.toLowerCase().includes(query));
+    renderSearchDropdown(filtered);
+    if (isDropdownVisible) searchDropdown.style.display = "block";
+});
+
+// Show initial subjects when input field is clicked
+searchBar.addEventListener("focus", () => {
+    if (searchBar.value.trim() === "") {
+        renderSearchDropdown(availableSubjects);
+    }
+    if (isDropdownVisible) searchDropdown.style.display = "block";
+});
+
 // Close dropdown on outside focus context execution shifts
 document.addEventListener("click", (e) => {
     if (!e.target.closest(".search-container")) {
