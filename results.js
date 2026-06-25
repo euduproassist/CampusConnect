@@ -11,7 +11,6 @@ const availableSubjects = [
     "Mathematical Literacy"
 ];
 
-let isDropdownVisible = false; 
 let activeSubjectRowName = null;
 let currentSubjects = {
     "English Home Language": "",
@@ -23,7 +22,6 @@ let currentSubjects = {
 // DOM Element Selectors
 const tbody = document.querySelector(".subjects-table tbody");
 const searchBar = document.querySelector(".search-bar");
-const chevronIcon = document.getElementById("toggleDropdownChevron");
 const searchDropdown = document.querySelector(".search-dropdown");
 const radialValue = document.querySelector(".radial-inner-value");
 const checkResultsBtn = document.getElementById("checkResultsBtn");
@@ -159,12 +157,12 @@ searchBar.addEventListener("input", (e) => {
     const query = e.target.value.toLowerCase().trim();
     if (query === "") {
         renderSearchDropdown(availableSubjects);
-        if (isDropdownVisible) searchDropdown.style.display = "block";
+        searchDropdown.style.display = "block";
         return;
     }
     const filtered = availableSubjects.filter(s => s.toLowerCase().includes(query));
     renderSearchDropdown(filtered);
-    if (isDropdownVisible) searchDropdown.style.display = "block";
+    searchDropdown.style.display = "block";
 });
 
 // Show initial subjects when input field is clicked
@@ -172,29 +170,13 @@ searchBar.addEventListener("focus", () => {
     if (searchBar.value.trim() === "") {
         renderSearchDropdown(availableSubjects);
     }
-    if (isDropdownVisible) searchDropdown.style.display = "block";
+    searchDropdown.style.display = "block";
 });
 
-// Close dropdown if clicking outside the search container, but ignore clicks on the chevron itself
+// Close dropdown on outside focus context execution shifts
 document.addEventListener("click", (e) => {
-    if (!e.target.closest(".search-container") && e.target !== chevronIcon) {
-        isDropdownVisible = false;
+    if (!e.target.closest(".search-container")) {
         searchDropdown.style.display = "none";
-        chevronIcon.className = "fas fa-chevron-down";
-    }
-});
-
-// Toggle subject dropdown visibility and rotate chevron (V vs ^)
-chevronIcon.addEventListener("click", (e) => {
-    e.stopPropagation(); // Prevent document click listener from immediately closing it
-    isDropdownVisible = !isDropdownVisible;
-    if (isDropdownVisible) {
-        renderSearchDropdown(availableSubjects); // Ensure list populates when manually opened
-        searchDropdown.style.display = "block";
-        chevronIcon.className = "fas fa-chevron-up";
-    } else {
-        searchDropdown.style.display = "none";
-        chevronIcon.className = "fas fa-chevron-down";
     }
 });
 
