@@ -11,7 +11,7 @@ const availableSubjects = [
     "Mathematical Literacy"
 ];
 
-let isDropdownVisible = true; 
+let isDropdownVisible = false; 
 let activeSubjectRowName = null;
 let currentSubjects = {
     "English Home Language": "",
