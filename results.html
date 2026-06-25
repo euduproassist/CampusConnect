@@ -257,6 +257,55 @@
             color: var(--text-muted);
             margin-bottom: 20px;
         }
+
+        /* Inline Autocomplete Field */
+       .search-container {
+            position: relative;
+            max-width: 460px;
+            margin: 0 auto;
+            text-align: left;
+            width: 100%;
+        }
+       .search-bar {
+            width: 100%;
+            padding: 12px 40px; /* Added right padding so text doesn't hide behind the chevron */
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            display: block; /* Ensures it respects padding box sizing properly */
+        }
+       .search-container .fa-search {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    pointer-events: none; /* Lets clicks pass directly through to the input field */
+}
+.search-container .fa-chevron-up {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    pointer-events: none;
+}
+.search-dropdown {
+    margin-top: 4px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    position: absolute; /* Ensures the dropdown doesn't push down the rest of the card */
+    width: 100%;
+    z-index: 10;
+}
+
         
        
         .dropdown-row {
