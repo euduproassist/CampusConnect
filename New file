@@ -1923,3 +1923,233 @@
 
 
 
+
+
+
+
+
+{
+  "name": "College of Business and Economics",
+  "contact_details": {
+    "telephone": "011 559 2492",
+    "email": "cbeinfo@uj.ac.za"
+  },
+  "programmes": [
+    {
+      "qualification_code": "B34ACP",
+      "programme_name": "Bachelor of Accounting (CA Track)",
+      "minimum_aps": 33,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "5 (60%+)",
+        "mathematical_literacy": "Not accepted"
+      },
+      "campus": "APK"
+    },
+    {
+      "qualification_code": "B3AFIQ",
+      "programme_name": "BCom in Accounting",
+      "minimum_aps": 28,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "4 (50%+)",
+        "mathematical_literacy": "Not accepted"
+      },
+      "campus": "APK"
+    },
+    {
+      "qualification_code": "B3FIPQ",
+      "programme_name": "BCom in Finance",
+      "minimum_aps": 28,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "4 (50%+)",
+        "mathematical_literacy": "Not accepted"
+      },
+      "campus": "APK"
+    },
+    {
+      "qualification_code": "B34ECQ",
+      "programme_name": "BCom in Economics and Econometrics",
+      "minimum_aps": 28,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "4 (50%+)",
+        "mathematical_literacy": "Not accepted"
+      },
+      "campus": "APK"
+    },
+    {
+      "qualification_code": "B34BMQ",
+      "programme_name": "BCom in Business Management",
+      "minimum_aps": 26,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "4 (50%+)",
+        "mathematical_literacy": "Not accepted"
+      },
+      "campus": "APK"
+    },
+    {
+      "qualification_code": "B34IMQ",
+      "programme_name": "BCom in Information Management",
+      "minimum_aps": 26,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "4 (50%+)",
+        "mathematical_literacy": "Not accepted"
+      },
+      "campus": "APK"
+    },
+    {
+      "qualification_code": "B34MKQ",
+      "programme_name": "BCom in Marketing Management",
+      "minimum_aps": 26,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "4 (50%+)",
+        "mathematical_literacy": "Not accepted"
+      },
+      "campus": "APK"
+    },
+    {
+      "qualification_code": "B34HRM",
+      "programme_name": "BCom in Human Resource Management",
+      "minimum_aps": 26,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "4 (50%+)",
+        "mathematical_literacy": "Not accepted"
+      },
+      "campus": "APK"
+    },
+    {
+      "qualification_code": "B1CACC",
+      "programme_name": "Bachelor of Hospitality Management",
+      "minimum_aps": 26,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "3 (40%+)",
+        "mathematical_literacy": "4 (50%+)"
+      },
+      "campus": "APB"
+    },
+    {
+      "qualification_code": "B1CTUR",
+      "programme_name": "Bachelor of Tourism Management",
+      "minimum_aps": 26,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "3 (40%+)",
+        "mathematical_literacy": "4 (50%+)"
+      },
+      "campus": "APB"
+    },
+    {
+      "qualification_code": "D3ACCQ",
+      "programme_name": "Diploma in Accountancy",
+      "minimum_aps": 22,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "3 (40%+)",
+        "mathematical_literacy": "4 (50%+)"
+      },
+      "campus": "APB"
+    },
+    {
+      "qualification_code": "D3FMNQ",
+      "programme_name": "Diploma in Financial Services",
+      "minimum_aps": 22,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "3 (40%+)",
+        "mathematical_literacy": "4 (50%+)"
+      },
+      "campus": "APB"
+    },
+    {
+      "qualification_code": "D3LGTQ",
+      "programme_name": "Diploma in Logistics",
+      "minimum_aps": 22,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "3 (40%+)",
+        "mathematical_literacy": "4 (50%+)"
+      },
+      "campus": "APB"
+    },
+    {
+      "qualification_code": "D3MARQ",
+      "programme_name": "Diploma in Marketing",
+      "minimum_aps": 22,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "3 (40%+)",
+        "mathematical_literacy": "4 (50%+)"
+      },
+      "campus": "APB"
+    },
+    {
+      "qualification_code": "D1HPMQ",
+      "programme_name": "Diploma in Hospitality Management",
+      "minimum_aps": 22,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "3 (40%+)",
+        "mathematical_literacy": "4 (50%+)"
+      },
+      "campus": "APB"
+    },
+    {
+      "qualification_code": "B34ACX",
+      "programme_name": "Bachelor of Accounting (Extended)",
+      "minimum_aps": 28,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "4 (50%+)",
+        "mathematical_literacy": "Not accepted"
+      },
+      "campus": "SWC"
+    },
+    {
+      "qualification_code": "B34ECX",
+      "programme_name": "BCom in Economics and Econometrics (Extended)",
+      "minimum_aps": 25,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "3 (40%+)",
+        "mathematical_literacy": "Not accepted"
+      },
+      "campus": "SWC"
+    },
+    {
+      "qualification_code": "B34BMX",
+      "programme_name": "BCom in Business Management (Extended)",
+      "minimum_aps": 23,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "3 (40%+)",
+        "mathematical_literacy": "Not accepted"
+      },
+      "campus": "SWC"
+    },
+    {
+      "qualification_code": "D3ACCX",
+      "programme_name": "Diploma in Accountancy (Extended)",
+      "minimum_aps": 19,
+      "admission_requirements": {
+        "english": "4 (50%+)",
+        "mathematics": "3 (40%+)",
+        "mathematical_literacy": "3 (40%+)"
+      },
+      "campus": "SOWETO"
+    }
+  ]
+}
+
+
+
+
+
+
+
