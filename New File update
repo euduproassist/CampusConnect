@@ -1,0 +1,1663 @@
+{
+  "university": "University of Johannesburg",
+  "year": 2027,
+  "prospectus_type": "Undergraduate",
+  "faculties": [
+    {
+      "name": "Faculty of Art, Design and Architecture",
+      "contact_details": {
+        "telephone": "011 559 1098",
+        "email": "web-fada@uj.ac.za"
+      },
+      "programmes": [
+        {
+          "qualification_code": "B8BA3Q",
+          "programme_name": "Bachelor of Architecture",
+          "minimum_aps": 30,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "B8CD2Q",
+          "programme_name": "BA (Communication Design)",
+          "minimum_aps": "25 (with Maths) or 26 (with Maths Lit)",
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "5 (60%+)"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "B8DM3Q",
+          "programme_name": "BA (Digital Media Design)",
+          "minimum_aps": "25 (with Maths) or 26 (with Maths Lit)",
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "5 (60%+)"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "B8ID1Q",
+          "programme_name": "BA (Industrial Design)",
+          "minimum_aps": "25 (with Maths) or 26 (with Maths Lit)",
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "5 (60%+)"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "B8BA6Q",
+          "programme_name": "BA (Interior Design)",
+          "minimum_aps": "25 (with Maths) or 26 (with Maths Lit)",
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "5 (60%+)"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "B8FD1Q",
+          "programme_name": "BA (Fashion Design)",
+          "minimum_aps": "25 (with Maths) or 26 (with Maths Lit)",
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "5 (60%+)"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "B8BA7Q",
+          "programme_name": "BA (Visual Art)",
+          "minimum_aps": "25 (with Maths) or 26 (with Maths Lit)",
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "D8AT1Q",
+          "programme_name": "Diploma in Architecture",
+          "minimum_aps": "25 (with Maths) or 26 (with Tech Maths)",
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "D8FP1Q",
+          "programme_name": "Diploma in Fashion Production",
+          "minimum_aps": "22 (with Maths) or 23 (with Maths Lit)",
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "D8JD1Q",
+          "programme_name": "Diploma in Jewellery Design and Manufacture",
+          "minimum_aps": "20 (with Maths) or 21 (with Maths Lit) or 22 (with Tech Maths)",
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APB"
+        }
+      ]
+    },
+    {
+      "name": "Faculty of Engineering and the Built Environment",
+      "contact_details": {
+        "telephone": "011 559 2107",
+        "email": "web-febe@uj.ac.za"
+      },
+      "programmes": [
+        {
+          "qualification_code": "B6B11Q",
+          "programme_name": "BEng in Civil Engineering",
+          "minimum_aps": 32,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B6B12Q",
+          "programme_name": "BEng in Electrical and Electronic Engineering",
+          "minimum_aps": 32,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B6B13Q",
+          "programme_name": "BEng in Mechanical Engineering",
+          "minimum_aps": 32,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B6B14Q",
+          "programme_name": "BEng in Chemical Engineering",
+          "minimum_aps": 32,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B6C11Q",
+          "programme_name": "BEngTech in Civil Engineering",
+          "minimum_aps": 28,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6E11Q",
+          "programme_name": "BEngTech in Electrical Engineering",
+          "minimum_aps": 28,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6M11Q",
+          "programme_name": "BEngTech in Mechanical Engineering",
+          "minimum_aps": 28,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6H11Q",
+          "programme_name": "BEngTech in Chemical Engineering",
+          "minimum_aps": 28,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6I11Q",
+          "programme_name": "BEngTech in Industrial Engineering",
+          "minimum_aps": 28,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6M12Q",
+          "programme_name": "BEngTech in Mining Engineering",
+          "minimum_aps": 23,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6M13Q",
+          "programme_name": "BEngTech in Extraction Metallurgy",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6M14Q",
+          "programme_name": "BEngTech in Physical Metallurgy",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6S11Q",
+          "programme_name": "BEngTech in Management Engineering",
+          "minimum_aps": 28,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6P11Q",
+          "programme_name": "Bachelor of Urban and Regional Planning",
+          "minimum_aps": 27,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6C12Q",
+          "programme_name": "Bachelor of Construction",
+          "minimum_aps": 30,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6BC1Q",
+          "programme_name": "Bachelor of Construction (Quantity Surveying)",
+          "minimum_aps": 30,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6Q11Q",
+          "programme_name": "Bachelor of Mine Surveying",
+          "minimum_aps": 23,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "D6MS1Q",
+          "programme_name": "Diploma in Mine Surveying",
+          "minimum_aps": 22,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "D6CE1Q",
+          "programme_name": "Diploma in Civil Engineering",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "D6EE1Q",
+          "programme_name": "Diploma in Electrical Engineering",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "D6ME1Q",
+          "programme_name": "Diploma in Mechanical Engineering",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "D6IE1Q",
+          "programme_name": "Diploma in Industrial Engineering",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6C11X",
+          "programme_name": "BEngTech in Civil Engineering (Extended)",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6E11X",
+          "programme_name": "BEngTech in Electrical Engineering (Extended)",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6M11X",
+          "programme_name": "BEngTech in Mechanical Engineering (Extended)",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6H11X",
+          "programme_name": "BEngTech in Chemical Engineering (Extended)",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6I11X",
+          "programme_name": "BEngTech in Industrial Engineering (Extended)",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6M12X",
+          "programme_name": "BEngTech in Mining Engineering (Extended)",
+          "minimum_aps": 22,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6M13X",
+          "programme_name": "BEngTech in Extraction Metallurgy (Extended)",
+          "minimum_aps": 22,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6M14X",
+          "programme_name": "BEngTech in Physical Metallurgy (Extended)",
+          "minimum_aps": 22,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "D6CE1X",
+          "programme_name": "Diploma in Civil Engineering (Extended)",
+          "minimum_aps": 22,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "D6EE1X",
+          "programme_name": "Diploma in Electrical Engineering (Extended)",
+          "minimum_aps": 22,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "D6ME1X",
+          "programme_name": "Diploma in Mechanical Engineering (Extended)",
+          "minimum_aps": 22,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "D6IE1X",
+          "programme_name": "Diploma in Industrial Engineering (Extended)",
+          "minimum_aps": 22,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "D6MS1X",
+          "programme_name": "Diploma in Mine Surveying (Extended)",
+          "minimum_aps": 20,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6C12X",
+          "programme_name": "Bachelor of Construction (Extended)",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6BC1X",
+          "programme_name": "Bachelor of Construction in Quantity Surveying (Extended)",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B6P11X",
+          "programme_name": "Bachelor of Urban and Regional Planning (Extended)",
+          "minimum_aps": 25,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        }
+      ]
+    },
+    {
+      "name": "Faculty of Education",
+      "contact_details": {
+        "telephone": "011 559 3451",
+        "email": "eduinfo@uj.ac.za"
+      },
+      "programmes": [
+        {
+          "qualification_code": "B5BFPQ",
+          "programme_name": "BEd in Foundation Phase Teaching (Grade R–3)",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "5 (60%+)"
+          },
+          "campus": "SWC"
+        },
+        {
+          "qualification_code": "B5BITQ",
+          "programme_name": "BEd in Intermediate Phase Teaching (Grade 4–7)",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "5 (60%+)"
+          },
+          "campus": "SWC"
+        },
+        {
+          "qualification_code": "B5LOPQ",
+          "programme_name": "BEd in Senior Phase and FET Teaching – Life Orientation and Psychology",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B5BSAQ",
+          "programme_name": "BEd in Senior Phase and FET Teaching – Accounting",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B5BSBQ",
+          "programme_name": "BEd in Senior Phase and FET Teaching – Business Management",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B5BSEQ",
+          "programme_name": "BEd in Senior Phase and FET Teaching – Economics",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B5LAEQ",
+          "programme_name": "BEd in Senior Phase and FET Teaching – English",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B5LAFQ",
+          "programme_name": "BEd in Senior Phase and FET Teaching – Afrikaans",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B5LAZQ",
+          "programme_name": "BEd in Senior Phase and FET Teaching – IsiZulu",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B5LASQ",
+          "programme_name": "BEd in Senior Phase and FET Teaching – Sepedi",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B5SGEQ",
+          "programme_name": "BEd in Senior Phase and FET Teaching – Geography",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "6 (70%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B5SLSQ",
+          "programme_name": "BEd in Senior Phase and FET Teaching – Life Sciences",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B5SMMQ",
+          "programme_name": "BEd in Senior Phase and FET Teaching – Mathematics",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B5SPHQ",
+          "programme_name": "BEd in Senior Phase and FET Teaching – Physical Sciences",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B5SCSQ",
+          "programme_name": "BEd in Senior Phase and FET Teaching – Computer Science",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B5STEQ",
+          "programme_name": "BEd in Senior Phase and FET Teaching – Engineering Graphics and Design",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        }
+      ]
+    },
+    {
+      "name": "Faculty of Health Sciences",
+      "contact_details": {
+        "telephone": "011 559 6925",
+        "email": "healthsci@uj.ac.za"
+      },
+      "programmes": [
+        {
+          "qualification_code": "B9N02Q",
+          "programme_name": "Bachelor of Nursing",
+          "minimum_aps": 30,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B9O02Q",
+          "programme_name": "Bachelor of Optometry",
+          "minimum_aps": 31,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B9S05Q",
+          "programme_name": "Bachelor of Biokinetics",
+          "minimum_aps": 32,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "5 (60%+)"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B9ENV1",
+          "programme_name": "Bachelor of Environmental Health",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B9C01Q",
+          "programme_name": "Bachelor of Health Sciences in Chiropractic",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B9M01Q",
+          "programme_name": "Bachelor of Diagnostic Radiography",
+          "minimum_aps": 30,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B9M03Q",
+          "programme_name": "Bachelor of Diagnostic Ultrasound",
+          "minimum_aps": 30,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B9M02Q",
+          "programme_name": "Bachelor of Nuclear Medicine",
+          "minimum_aps": 30,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B9M04Q",
+          "programme_name": "Bachelor of Radiation Therapy",
+          "minimum_aps": 30,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B9E01Q",
+          "programme_name": "Bachelor of Health Sciences in Emergency Medical Care",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B9L01Q",
+          "programme_name": "Bachelor of Health Sciences in Medical Laboratory Science",
+          "minimum_aps": 30,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B9P01Q",
+          "programme_name": "Bachelor of Health Sciences in Podiatry",
+          "minimum_aps": 28,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B9CM01",
+          "programme_name": "Bachelor of Health Sciences in Complementary Medicine",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B9SE1Q",
+          "programme_name": "Bachelor of Health Sciences in Sport and Exercise Sciences",
+          "minimum_aps": 27,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "5 (60%+)"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B9S14Q",
+          "programme_name": "Bachelor of Commerce in Sport Management",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "D9E01Q",
+          "programme_name": "Diploma in Emergency Medical Care",
+          "minimum_aps": 23,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "D9S01Q",
+          "programme_name": "Diploma in Sport Management",
+          "minimum_aps": 19,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "F9E01Q",
+          "programme_name": "Higher Certificate in Emergency Medical Care",
+          "minimum_aps": 18,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "F9SA1Q",
+          "programme_name": "Higher Certificate in Sport Administration",
+          "minimum_aps": 18,
+          "admission_requirements": {
+            "english": "3 (40%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "3 (40%+)"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "F9SC2Q",
+          "programme_name": "Higher Certificate in Sport Coaching and Exercise Sciences",
+          "minimum_aps": 18,
+          "admission_requirements": {
+            "english": "3 (40%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "3 (40%+)"
+          },
+          "campus": "DFC"
+        }
+      ]
+    },
+    {
+      "name": "Faculty of Humanities",
+      "contact_details": {
+        "telephone": "011 559 3796",
+        "email": "rmosia@uj.ac.za"
+      },
+      "programmes": [
+        {
+          "qualification_code": "B7001Q",
+          "programme_name": "BA (Bachelor of Arts) - General",
+          "minimum_aps": 27,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B7021Q",
+          "programme_name": "BA with specialisation in Strategic Communication",
+          "minimum_aps": 27,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B7024Q",
+          "programme_name": "BA with specialisation in Politics, Economics and Technology",
+          "minimum_aps": 27,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B7026Q",
+          "programme_name": "BA with specialisation in Language Practice",
+          "minimum_aps": 27,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B7022Q",
+          "programme_name": "BA in Community Development and Leadership",
+          "minimum_aps": 27,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "SWC"
+        },
+        {
+          "qualification_code": "B7016Q",
+          "programme_name": "Bachelor of Social Work (BSW)",
+          "minimum_aps": 30,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B7018Q",
+          "programme_name": "BA in Journalism",
+          "minimum_aps": 27,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B7019Q",
+          "programme_name": "BA in Digital Media Design",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B7020Q",
+          "programme_name": "BA in Public Management and Governance",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B7023Q",
+          "programme_name": "BA in Development Studies",
+          "minimum_aps": 27,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B7025Q",
+          "programme_name": "BA in International Studies",
+          "minimum_aps": 27,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B7011Q",
+          "programme_name": "Diploma in Public Relations and Communication",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "B7015Q",
+          "programme_name": "Diploma in Operational Management",
+          "minimum_aps": 22,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "B7001X",
+          "programme_name": "BA (Bachelor of Arts) - General (Extended)",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B7021X",
+          "programme_name": "BA with specialisation in Strategic Communication (Extended)",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B7026X",
+          "programme_name": "BA with specialisation in Language Practice (Extended)",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B7022X",
+          "programme_name": "BA in Community Development and Leadership (Extended)",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "SWC"
+        },
+        {
+          "qualification_code": "B7018X",
+          "programme_name": "BA in Journalism (Extended)",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B7020X",
+          "programme_name": "BA in Public Management and Governance (Extended)",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B7023X",
+          "programme_name": "BA in Development Studies (Extended)",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B7025X",
+          "programme_name": "BA in International Studies (Extended)",
+          "minimum_aps": 24,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B7011X",
+          "programme_name": "Diploma in Public Relations and Communication (Extended)",
+          "minimum_aps": 21,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "3 (40%+)"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "B7015X",
+          "programme_name": "Diploma in Operational Management (Extended)",
+          "minimum_aps": 19,
+          "admission_requirements": {
+            "english": "3 (40%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "3 (40%+)"
+          },
+          "campus": "APB"
+        }
+      ]
+    },
+    {
+      "name": "Faculty of Law",
+      "contact_details": {
+        "telephone": "011 559 2141",
+        "email": "law@uj.ac.za"
+      },
+      "programmes": [
+        {
+          "qualification_code": "B4L01Q",
+          "programme_name": "LLB (Bachelor of Laws) - 4 Year",
+          "minimum_aps": 32,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B4L02X",
+          "programme_name": "LLB (Bachelor of Laws) - Extended 5 Year",
+          "minimum_aps": 28,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "SWC"
+        },
+        {
+          "qualification_code": "B7002Q",
+          "programme_name": "BA (Law) - Bachelor of Arts in Law",
+          "minimum_aps": 30,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B34LWQ",
+          "programme_name": "BCom (Law) - Bachelor of Commerce in Law",
+          "minimum_aps": 32,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        }
+      ]
+    },
+    {
+      "name": "Faculty of Science",
+      "contact_details": {
+        "telephone": "011 559 4562",
+        "email": "science@uj.ac.za"
+      },
+      "programmes": [
+        {
+          "qualification_code": "D2AC1Q",
+          "programme_name": "Diploma in Analytical Chemistry",
+          "minimum_aps": 21,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "D2BT1Q",
+          "programme_name": "Diploma in Biotechnology",
+          "minimum_aps": 21,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "D2FT1Q",
+          "programme_name": "Diploma in Food Technology",
+          "minimum_aps": 21,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B2I01Q",
+          "programme_name": "BSc in Computer Science and Informatics",
+          "minimum_aps": 30,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "6 (70%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B2L01Q",
+          "programme_name": "BSc in Life and Environmental Sciences (General)",
+          "minimum_aps": 30,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B2P01Q",
+          "programme_name": "BSc in Physical Sciences (General)",
+          "minimum_aps": 30,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B2M01Q",
+          "programme_name": "BSc in Mathematical Sciences (General)",
+          "minimum_aps": 30,
+          "admission_requirements": {
+            "english": "5 (60%+)",
+            "mathematics": "6 (70%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "D2AC1X",
+          "programme_name": "Diploma in Analytical Chemistry (Extended)",
+          "minimum_aps": 19,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "D2BT1X",
+          "programme_name": "Diploma in Biotechnology (Extended)",
+          "minimum_aps": 19,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "D2FT1X",
+          "programme_name": "Diploma in Food Technology (Extended)",
+          "minimum_aps": 19,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "DFC"
+        },
+        {
+          "qualification_code": "B2I01X",
+          "programme_name": "BSc in Computer Science and Informatics (Extended)",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B2L01X",
+          "programme_name": "BSc in Life and Environmental Sciences (Extended)",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B2P01X",
+          "programme_name": "BSc in Physical Sciences (Extended)",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B2M01X",
+          "programme_name": "BSc in Mathematical Sciences (Extended)",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        }
+      ]
+    },
+    {
+      "name": "College of Business and Economics",
+      "contact_details": {
+        "telephone": "011 559 2492",
+        "email": "cbeinfo@uj.ac.za"
+      },
+      "programmes": [
+        {
+          "qualification_code": "B34ACP",
+          "programme_name": "Bachelor of Accounting (CA Track)",
+          "minimum_aps": 33,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "5 (60%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B3AFIQ",
+          "programme_name": "BCom in Accounting",
+          "minimum_aps": 28,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B3FIPQ",
+          "programme_name": "BCom in Finance",
+          "minimum_aps": 28,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B34ECQ",
+          "programme_name": "BCom in Economics and Econometrics",
+          "minimum_aps": 28,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B34BMQ",
+          "programme_name": "BCom in Business Management",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B34IMQ",
+          "programme_name": "BCom in Information Management",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B34MKQ",
+          "programme_name": "BCom in Marketing Management",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B34HRM",
+          "programme_name": "BCom in Human Resource Management",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "APK"
+        },
+        {
+          "qualification_code": "B1CACC",
+          "programme_name": "Bachelor of Hospitality Management",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "B1CTUR",
+          "programme_name": "Bachelor of Tourism Management",
+          "minimum_aps": 26,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "D3ACCQ",
+          "programme_name": "Diploma in Accountancy",
+          "minimum_aps": 22,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "D3FMNQ",
+          "programme_name": "Diploma in Financial Services",
+          "minimum_aps": 22,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "D3LGTQ",
+          "programme_name": "Diploma in Logistics",
+          "minimum_aps": 22,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "D3MARQ",
+          "programme_name": "Diploma in Marketing",
+          "minimum_aps": 22,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "D1HPMQ",
+          "programme_name": "Diploma in Hospitality Management",
+          "minimum_aps": 22,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "4 (50%+)"
+          },
+          "campus": "APB"
+        },
+        {
+          "qualification_code": "B34ACX",
+          "programme_name": "Bachelor of Accounting (Extended)",
+          "minimum_aps": 28,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "4 (50%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "SWC"
+        },
+        {
+          "qualification_code": "B34ECX",
+          "programme_name": "BCom in Economics and Econometrics (Extended)",
+          "minimum_aps": 25,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "SWC"
+        },
+        {
+          "qualification_code": "B34BMX",
+          "programme_name": "BCom in Business Management (Extended)",
+          "minimum_aps": 23,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "Not accepted"
+          },
+          "campus": "SWC"
+        },
+        {
+          "qualification_code": "D3ACCX",
+          "programme_name": "Diploma in Accountancy (Extended)",
+          "minimum_aps": 19,
+          "admission_requirements": {
+            "english": "4 (50%+)",
+            "mathematics": "3 (40%+)",
+            "mathematical_literacy": "3 (40%+)"
+          },
+          "campus": "SWC"
+        }
+      ]
+    }
+  ]
+}
