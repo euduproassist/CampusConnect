@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QualifySA - Find Every University Course You Qualify For</title>
+    <title>MyApply SA - Build Your Academic Passport</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -16,10 +16,7 @@
             --border-color: #e2e8f0;
             --pill-bg: #eff6ff;
             --pill-text: #1d6ed0;
-            
-            --uj-orange: #ea580c;
-            --up-red: #dc2626;
-            --nwu-purple: #7c3aed;
+            --success-green: #10b981;
         }
 
         * {
@@ -29,6 +26,11 @@
             font-family: 'Inter', sans-serif;
         }
 
+        html, body {
+            width: 100%;
+            overflow-x: hidden; /* Hard restriction against any side scrolling */
+        }
+
         body {
             background-color: #ffffff;
             color: var(--text-dark);
@@ -36,13 +38,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-
-        /* Master wrapper matching image proportions */
-        .wrapper {
-            width: 100%;
-            max-width: 1200px;
-            padding: 0 24px 80px 24px;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Top Navigation Header Bar */
@@ -53,24 +49,24 @@
             padding: 0 24px;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: space-between;
             background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 10px;
             font-weight: 800;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: var(--text-dark);
             letter-spacing: -0.5px;
         }
 
         .brand i {
             color: var(--primary-blue);
-            font-size: 1.4rem;
-            margin-bottom: 2px;
+            font-size: 1.5rem;
         }
 
         .brand span {
@@ -79,7 +75,7 @@
 
         .nav-links {
             display: flex;
-            gap: 36px;
+            gap: 32px;
             list-style: none;
         }
 
@@ -91,18 +87,44 @@
             transition: color 0.15s ease;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: var(--primary-blue);
+        }
+
+        .login-btn-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: #ffffff;
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.15s ease;
+        }
+
+        .login-btn-top:hover {
+            background: var(--light-bg);
+        }
+
+        /* Master wrapper */
+        .wrapper {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 24px 60px 24px;
         }
 
         /* Split Hero Grid Layout */
         .hero-section {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
-            gap: 48px;
+            gap: 40px;
             align-items: center;
-            margin-top: 40px;
-            margin-bottom: 90px;
+            margin-top: 60px;
+            margin-bottom: 80px;
         }
 
         .hero-content {
@@ -111,24 +133,23 @@
         }
 
         .micro-badge {
-            background: var(--pill-bg);
-            color: var(--pill-text);
-            padding: 6px 14px;
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 6px 16px;
             border-radius: 30px;
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             font-weight: 600;
             width: fit-content;
             margin-bottom: 24px;
-            border: 1px solid #dbeafe;
-            letter-spacing: 0.2px;
+            border: 1px solid #bae6fd;
         }
 
         .hero-content h1 {
-            font-size: 3.1rem;
+            font-size: 3.6rem;
             font-weight: 800;
-            line-height: 1.12;
+            line-height: 1.15;
             letter-spacing: -1.5px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             color: var(--text-dark);
         }
 
@@ -137,11 +158,12 @@
         }
 
         .hero-content p {
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             color: var(--text-muted);
-            line-height: 1.55;
-            margin-bottom: 32px;
-            max-width: 530px;
+            line-height: 1.6;
+            margin-bottom: 36px;
+            max-width: 520px;
+            font-weight: 500;
         }
 
         .cta-btn {
@@ -156,25 +178,46 @@
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            transition: background-color 0.15s ease, transform 0.1s ease;
+            gap: 12px;
+            transition: all 0.15s ease;
             text-decoration: none;
+            box-shadow: 0 4px 14px rgba(28, 100, 242, 0.3);
         }
 
         .cta-btn:hover {
             background-color: var(--primary-blue-hover);
+            transform: translateY(-1px);
         }
 
-        .cta-btn:active {
-            transform: scale(0.99);
+        .login-sub-block {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 24px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 600;
         }
 
-        /* Trust/Social Proof row layout */
+        .login-sub-block a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .login-sub-block a:hover {
+            text-decoration: underline;
+        }
+
+        /* Social Proof Group */
         .social-proof {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-top: 36px;
+            gap: 14px;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 24px;
+            max-width: 500px;
         }
 
         .avatar-stack {
@@ -182,11 +225,11 @@
         }
 
         .avatar-stack img {
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             border: 2px solid white;
-            margin-left: -8px;
+            margin-left: -10px;
             object-fit: cover;
         }
 
@@ -195,219 +238,227 @@
         }
 
         .social-proof-text {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--text-muted);
             line-height: 1.4;
-            max-width: 320px;
             font-weight: 500;
         }
 
-        /* Interactive Right Card Mockup */
+        /* Hero Mockup Showcase Frame */
         .mockup-container {
+            position: relative;
             display: flex;
-            justify-content: flex-end;
-        }
-
-        .score-card {
-            width: 100%;
-            max-width: 410px;
-            background: #ffffff;
-            border-radius: 24px;
-            padding: 32px;
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-            border: 1px solid #f1f5f9;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .result-pill {
-            align-self: center;
-            background: var(--pill-bg);
-            color: var(--pill-text);
-            font-size: 0.78rem;
-            font-weight: 600;
-            padding: 4px 14px;
-            border-radius: 30px;
-            margin-bottom: 24px;
-        }
-
-        .score-block {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        .score-label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .score-number {
-            font-size: 4.8rem;
-            font-weight: 800;
-            color: var(--primary-blue);
-            line-height: 1;
-            margin-top: 4px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            border-top: 1px solid #f1f5f9;
-            border-bottom: 1px solid #f1f5f9;
-            padding: 16px 0;
-            margin-bottom: 24px;
-        }
-
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .stat-icon {
-            width: 38px;
-            height: 38px;
-            background: var(--pill-bg);
-            color: var(--pill-text);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            align-items: center;
+            width: 100%;
         }
 
-        .stat-details h4 {
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            line-height: 1.1;
+        .passport-graphic-layout {
+            position: relative;
+            width: 100%;
+            max-width: 460px;
+            height: 400px;
         }
 
-        .stat-details p {
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .programs-section-title {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 12px;
-        }
-
-        .program-list {
+        /* Floating Stack View */
+        .floating-docs-stack {
+            position: absolute;
+            left: 0;
+            top: 20px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 14px;
+            z-index: 3;
+            width: 240px;
         }
 
-        .program-item {
+        .mini-doc-node {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 12px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 14px;
-            background: var(--light-bg);
-            border-radius: 10px;
-            transition: background 0.1s ease;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+            border: 1px solid #f1f5f9;
         }
 
-        .program-meta {
+        .mini-doc-meta {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .program-badge {
-            width: 32px;
-            height: 32px;
+        .mini-doc-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--pill-bg);
+            color: var(--primary-blue);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 0.72rem;
-            font-weight: 700;
+            font-size: 0.95rem;
         }
 
-        .uj-bg { background-color: var(--uj-orange); }
-        .up-bg { background-color: var(--up-red); }
-        .nwu-bg { background-color: var(--nwu-purple); }
-
-        .program-info h5 {
-            font-size: 0.82rem;
+        .mini-doc-info h5 {
+            font-size: 0.85rem;
             font-weight: 700;
             color: var(--text-dark);
-            line-height: 1.2;
         }
 
-        .program-info p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .program-item i {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        /* Middle "How It Works" Layout */
-        .section-title {
-            text-align: center;
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            margin-bottom: 40px;
-        }
-
-        .process-flow {
+        .mini-doc-status {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            position: relative;
-            margin-bottom: 70px;
-            padding: 0 40px;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--success-green);
+            margin-top: 2px;
         }
 
-        .process-step {
+        .mini-doc-status.blue-type {
+            color: var(--primary-blue);
+        }
+
+        /* 2.5D Premium Booklet Object */
+        .passport-booklet-3d {
+            background: #ffffff;
+            width: 240px;
+            height: 340px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 20px 30px 60px rgba(15, 23, 42, 0.1);
+            padding: 32px 24px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            width: 24%;
-            position: relative;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            transform: rotate(4deg);
             z-index: 2;
         }
 
-        .step-icon-wrapper {
-            width: 64px;
-            height: 64px;
+        .passport-shield-emblem {
+            width: 80px;
+            height: 90px;
+            border: 3px solid var(--primary-blue);
+            border-radius: 50% 50% 50% 50% / 20% 20% 80% 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+        }
+
+        .passport-shield-emblem i {
+            font-size: 2rem;
+            color: var(--primary-blue);
+        }
+
+        .passport-booklet-3d h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: #2563eb;
+            margin-bottom: 6px;
+        }
+
+        .passport-booklet-3d p {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #1d4ed8;
+            letter-spacing: 0.5px;
+        }
+
+        /* Four Feature Blocks Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 32px 24px;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.02);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .feature-icon-wrapper {
+            width: 56px;
+            height: 56px;
             background: var(--pill-bg);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--pill-text);
-            font-size: 1.3rem;
-            margin-bottom: 16px;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        /* Horizontal Step Row Process Flow */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 48px;
+            letter-spacing: -0.5px;
+        }
+
+        .process-flow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 80px;
+        }
+
+        .process-step {
             position: relative;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 28px 20px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.01);
         }
 
         .step-number {
             position: absolute;
-            bottom: -2px;
-            left: -2px;
-            width: 22px;
-            height: 22px;
-            background: var(--pill-bg);
-            color: var(--pill-text);
+            top: -11px;
+            left: 20px;
+            width: 24px;
+            height: 24px;
+            background: var(--primary-blue);
+            color: #ffffff;
             border-radius: 50%;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -415,151 +466,227 @@
             border: 2px solid white;
         }
 
-        .process-step h4 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 6px;
-        }
-
-        .process-step p {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            line-height: 1.45;
-            font-weight: 500;
-        }
-
-        /* SVG Connecting Curve Arrows between Process Nodes */
-        .flow-arrow {
-            position: absolute;
-            top: 15px;
-            width: 20%;
-            height: 30px;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .arrow-1 { left: 24%; }
-        .arrow-2 { left: 56%; }
-
-        /* Banner Value Strip Row Grid */
-        .value-strip {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            background: var(--light-bg);
-            padding: 32px 40px;
-            border-radius: 20px;
-            margin-bottom: 90px;
-        }
-
-        .value-card {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .value-icon {
+        .step-icon-side {
             width: 48px;
             height: 48px;
-            background: #ffffff;
-            border-radius: 12px;
+            background: var(--pill-bg);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary-blue);
             font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.02);
+            flex-shrink: 0;
         }
 
-        .value-details h4 {
+        .step-body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .step-body h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .step-body p {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+            font-weight: 500;
+        }
+
+        /* Unified Trust Grid Container Row */
+        .trust-container {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 36px;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .trust-container h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 36px;
+            letter-spacing: -0.3px;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .trust-stat-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-align: left;
+        }
+
+        .trust-stat-row i {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            background: #ffffff;
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
+            border: 1px solid #f1f5f9;
+            flex-shrink: 0;
+        }
+
+        .stat-text-block h4 {
             font-size: 1.4rem;
             font-weight: 800;
             color: var(--text-dark);
             line-height: 1.1;
         }
 
-        .value-details p {
-            font-size: 0.85rem;
+        .stat-text-block p {
+            font-size: 0.84rem;
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 600;
             margin-top: 2px;
         }
 
-        /* Conversion Footer Box Shell Block */
-        .bottom-cta-shell {
-            text-align: center;
+        /* Split Horizontal Bottom CTA Row Module Layout */
+        .bottom-cta-row {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 36px 44px;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .bottom-cta-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .bottom-cta-icon-box {
+            width: 56px;
+            height: 56px;
+            background: var(--pill-bg);
+            border-radius: 50%;
+            display: flex;
             align-items: center;
             justify-content: center;
-            background: #ffffff;
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            border: 1px solid #dbeafe;
         }
 
-        .bottom-cta-shell h3 {
-            font-size: 2.2rem;
+        .bottom-cta-text h3 {
+            font-size: 1.35rem;
             font-weight: 800;
             color: var(--text-dark);
-            letter-spacing: -0.8px;
-            margin-bottom: 12px;
+            margin-bottom: 4px;
+            letter-spacing: -0.3px;
         }
 
-        .bottom-cta-shell p {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            margin-bottom: 28px;
-            max-width: 600px;
-            font-weight: 500;
-        }
-
-        .verified-tag {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.85rem;
+        .bottom-cta-text p {
+            font-size: 0.95rem;
             color: var(--text-muted);
             font-weight: 500;
-            margin-top: 16px;
         }
 
-        .verified-tag i {
-            color: #10b981;
+        .copyright-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+            width: 100%;
+            font-weight: 500;
+            margin-top: 20px;
         }
 
-        /* Adaptive Fluid Engineering Responsive Breakpoints */
-        @media (max-width: 968px) {
+        /* Clean Response Fluid Breakpoint Handlers */
+        @media (max-width: 1024px) {
             .hero-section {
                 grid-template-columns: 1fr;
-                gap: 40px;
-                margin-bottom: 60px;
+                text-align: center;
+                gap: 60px;
             }
             .hero-content {
-                text-align: center;
                 align-items: center;
             }
-            .mockup-container {
+            .social-proof {
                 justify-content: center;
             }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
             .process-flow {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+            .trust-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 0 16px;
+            }
+            .nav-links {
+                display: none; /* Safely hide menu links on tablet/mobile screens */
+            }
+            .bottom-cta-row {
                 flex-direction: column;
-                gap: 40px;
-                align-items: center;
-                padding: 0;
-            }
-            .process-step {
-                width: 100%;
-                max-width: 280px;
-            }
-            .flow-arrow {
-                display: none;
-            }
-            .value-strip {
-                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 36px 24px;
                 gap: 24px;
-                padding: 24px;
             }
-            .bottom-cta-shell h3 {
-                font-size: 1.75rem;
+            .bottom-cta-left {
+                flex-direction: column;
+                gap: 14px;
+            }
+            .bottom-cta-row .cta-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .hero-content h1 {
+                font-size: 2.6rem;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .process-flow {
+                grid-template-columns: 1fr;
+            }
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+            .passport-graphic-layout {
+                transform: scale(0.85);
+                height: 350px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .passport-graphic-layout {
+                transform: scale(0.72);
+                height: 300px;
             }
         }
     </style>
@@ -568,171 +695,202 @@
 
     <header class="header">
         <div class="brand">
-            <i class="fas fa-graduation-cap"></i> Qualify<span>SA</span>
+            <i class="fas fa-shield-alt"></i> MyApply<span>SA</span>
         </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Universities</a></li>
+            <li><a href="#">Bursaries</a></li>
+            <li><a href="#">Course Explorer</a></li>
+        </ul>
+        <a href="#" class="login-btn-top"><i class="far fa-user"></i> Log in</a>
     </header>
 
     <div class="wrapper">
         
         <section class="hero-section">
             <div class="hero-content">
-                <div class="micro-badge">
-                    100% FREE • No Sign Up • No Hidden Costs
+                <div class="micro-badge">Your future. Simplified.</div>
+                <h1>Build Your <br><span>Academic Passport</span></h1>
+                <p>Upload your documents once. Apply faster to universities and bursaries without typing the same information repeatedly.</p>
+                
+                <a href="#" class="cta-btn">Create My Passport <i class="fas fa-arrow-right"></i></a>
+                
+                <div class="login-sub-block">
+                    Already have an account? <a href="#">Log in</a>
                 </div>
-                <h1>Find Every University Course You <span>Qualify For</span></h1>
-                <p>Enter your Grade 12 subjects and marks. We'll calculate your APS and show you all the universities and programmes you qualify for.</p>
-                
-                <a href="results.html" class="cta-btn">Check My Results <i class="fas fa-arrow-right"></i></a>
-                
+
                 <div class="social-proof">
                     <div class="avatar-stack">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Student Profile">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Student Profile">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Student Profile">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Student Profile">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Student">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Student">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Student">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Student">
                     </div>
-                    <span class="social-proof-text">Join thousands of South African students who've already found their future.</span>
+                    <span class="social-proof-text">Join thousands of South African students who've already simplified their applications.</span>
                 </div>
             </div>
 
             <div class="mockup-container">
-                <div class="score-card">
-                    <div class="result-pill">Example Result</div>
-                    
-                    <div class="score-block">
-                        <div class="score-label">APS Score</div>
-                        <div class="score-number">34</div>
+                <div class="passport-graphic-layout">
+                    <div class="floating-docs-stack">
+                        <div class="mini-doc-node">
+                            <div class="mini-doc-meta">
+                                <div class="mini-doc-icon"><i class="far fa-id-card"></i></div>
+                                <div class="mini-doc-info">
+                                    <h5>ID Document</h5>
+                                    <div class="mini-doc-status"><i class="fas fa-check-circle"></i> Verified</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mini-doc-node">
+                            <div class="mini-doc-meta">
+                                <div class="mini-doc-icon"><i class="fas fa-graduation-cap"></i></div>
+                                <div class="mini-doc-info">
+                                    <h5>Matric Results</h5>
+                                    <div class="mini-doc-status"><i class="fas fa-check-circle"></i> Verified</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mini-doc-node">
+                            <div class="mini-doc-meta">
+                                <div class="mini-doc-icon"><i class="fas fa-home"></i></div>
+                                <div class="mini-doc-info">
+                                    <h5>Proof of Residence</h5>
+                                    <div class="mini-doc-status"><i class="fas fa-check-circle"></i> Verified</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mini-doc-node">
+                            <div class="mini-doc-meta">
+                                <div class="mini-doc-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <div class="mini-doc-info">
+                                    <h5>And More</h5>
+                                    <div class="mini-doc-status blue-type"><i class="fas fa-upload"></i> Uploaded</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-icon"><i class="fas fa-university"></i></div>
-                            <div class="stat-details">
-                                <h4>12</h4>
-                                <p>Universities</p>
-                            </div>
+                    <div class="passport-booklet-3d">
+                        <div class="passport-shield-emblem">
+                            <i class="fas fa-graduation-cap"></i>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-icon"><i class="fas fa-book-open"></i></div>
-                            <div class="stat-details">
-                                <h4>84</h4>
-                                <p>Programmes</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="sample-programs-wrapper">
-                        <div class="programs-section-title">Sample Programmes You Qualify For</div>
-                        <div class="program-list">
-                            <div class="program-item">
-                                <div class="program-meta">
-                                    <div class="program-badge uj-bg">UJ</div>
-                                    <div class="program-info">
-                                        <h5>University of Johannesburg</h5>
-                                        <p>BCom Accounting</p>
-                                    </div>
-                                </div>
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                            <div class="program-item">
-                                <div class="program-meta">
-                                    <div class="program-badge up-bg">UP</div>
-                                    <div class="program-info">
-                                        <h5>University of Pretoria</h5>
-                                        <p>BSc Information Technology</p>
-                                    </div>
-                                </div>
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                            <div class="program-item">
-                                <div class="program-meta">
-                                    <div class="program-badge nwu-bg">NWU</div>
-                                    <div class="program-info">
-                                        <h5>North-West University</h5>
-                                        <p>BA Psychology</p>
-                                    </div>
-                                </div>
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </div>
+                        <h3>MYAPPLY SA</h3>
+                        <p>ACADEMIC PASSPORT</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon-wrapper"><i class="fas fa-lock"></i></div>
+                <h4>Secure & Private</h4>
+                <p>Your information is encrypted and always protected.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrapper"><i class="fas fa-wand-magic-sparkles"></i></div>
+                <h4>AI-Powered Extraction</h4>
+                <p>We extract your information accurately and save you time.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrapper"><i class="fas fa-id-badge"></i></div>
+                <h4>One Academic Passport</h4>
+                <p>All your verified details in one place, ready to use.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon-wrapper"><i class="fas fa-bolt"></i></div>
+                <h4>Apply Faster</h4>
+                <p>Auto-fill forms and submit applications in minutes.</p>
             </div>
         </section>
 
         <h2 class="section-title">How It Works</h2>
         <section class="process-flow">
-            <svg class="flow-arrow arrow-1" viewBox="0 0 100 30" fill="none" preserveAspectRatio="none">
-                <path d="M0,20 Q50,0 100,20" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,4" fill="none"/>
-            </svg>
-            <svg class="flow-arrow arrow-2" viewBox="0 0 100 30" fill="none" preserveAspectRatio="none">
-                <path d="M0,20 Q50,0 100,20" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,4" fill="none"/>
-            </svg>
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-icon-side"><i class="fas fa-cloud-upload-alt"></i></div>
+                <div class="step-body">
+                    <h4>Upload Documents</h4>
+                    <p>Upload your ID, Matric results and other important documents.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-icon-side"><i class="far fa-file-alt"></i></div>
+                <div class="step-body">
+                    <h4>We Extract & Verify</h4>
+                    <p>Our AI extracts your information and you verify the details.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-icon-side"><i class="fas fa-id-card"></i></div>
+                <div class="step-body">
+                    <h4>Build Your Passport</h4>
+                    <p>Your Academic Passport is ready and saved securely.</p>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-icon-side"><i class="fas fa-paper-plane"></i></div>
+                <div class="step-body">
+                    <h4>Apply Anywhere</h4>
+                    <p>Use your passport to auto-fill applications and apply with ease.</p>
+                </div>
+            </div>
+        </section>
 
-            <div class="process-step">
-                <div class="step-icon-wrapper">
-                    <i class="far fa-file-alt"></i>
-                    <div class="step-number">1</div>
+        <section class="trust-container">
+            <h3>Trusted by South African Students</h3>
+            <div class="trust-grid">
+                <div class="trust-stat-row">
+                    <i class="fas fa-university"></i>
+                    <div class="stat-text-block">
+                        <h4>26+</h4>
+                        <p>Universities Supported</p>
+                    </div>
                 </div>
-                <h4>Enter Your Marks</h4>
-                <p>Add your Grade 12 subjects and your marks.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-icon-wrapper">
-                    <i class="fas fa-calculator"></i>
-                    <div class="step-number">2</div>
-                </div>
-                <h4>We Calculate Your APS</h4>
-                <p>We calculate your APS score instantly and accurately.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-icon-wrapper">
+                <div class="trust-stat-row">
                     <i class="fas fa-graduation-cap"></i>
-                    <div class="step-number">3</div>
+                    <div class="stat-text-block">
+                        <h4>500+</h4>
+                        <p>Bursaries Available</p>
+                    </div>
                 </div>
-                <h4>See What You Qualify For</h4>
-                <p>View all universities and programmes you qualify for.</p>
-            </div>
-        </section>
-
-        <section class="value-strip">
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-university"></i></div>
-                <div class="value-details">
-                    <h4>26+</h4>
-                    <p>All public universities in South Africa</p>
+                <div class="trust-stat-row">
+                    <i class="fas fa-shield-alt"></i>
+                    <div class="stat-text-block">
+                        <h4>100%</h4>
+                        <p>Secure & Private</p>
+                    </div>
                 </div>
-            </div>
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-book-open"></i></div>
-                <div class="value-details">
-                    <h4>Thousands</h4>
-                    <p>Undergraduate programmes across all fields</p>
-                </div>
-            </div>
-            <div class="value-card">
-                <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
-                <div class="value-details">
-                    <h4>100% Free</h4>
-                    <p>No fees. No hidden costs. Always free for students.</p>
+                <div class="trust-stat-row">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-text-block">
+                        <h4>10,000+</h4>
+                        <p>Students Online</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="bottom-cta-shell">
-            <h3>Your Future Starts With One Step</h3>
-            <p>Don't guess your options. Know what you qualify for. It's fast, accurate and completely free.</p>
-            
-            <a href="results.html" class="cta-btn" style="padding: 18px 48px;">Find My Courses Now <i class="fas fa-arrow-right"></i></a>
-            
-            <div class="verified-tag">
-                <i class="fas fa-check-circle"></i> Trusted by thousands of South African students
+        <section class="bottom-cta-row">
+            <div class="bottom-cta-left">
+                <div class="bottom-cta-icon-box"><i class="fas fa-shield-alt"></i></div>
+                <div class="bottom-cta-text">
+                    <h3>Your Future. Your Passport. Your Applications.</h3>
+                    <p>Create your Academic Passport today and open more doors.</p>
+                </div>
             </div>
+            <a href="#" class="cta-btn">Create My Passport <i class="fas fa-arrow-right"></i></a>
         </section>
 
-        </div> 
+        <div class="copyright-text">
+            &copy; 2026 MyApply SA. All rights reserved.
+        </div>
+
+    </div> 
 </body>
 </html>
-
-
-
