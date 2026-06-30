@@ -1,0 +1,179 @@
+I think this is the strongest version of the product you've described so far because it focuses on the **user experience**, not just the technology. It gives the student a clear feeling of progress at every step.
+
+Here's how I would think about the flow.
+
+### 1. Build Your Academic Passport
+
+This is a great first screen.
+
+Instead of presenting registration forms, the user immediately gets value by uploading two documents.
+
+**Goal:** "I can use this in under two minutes."
+
+---
+
+### 2. AI Extraction
+
+This is the "wow" moment.
+
+Avoid showing raw OCR output. Instead, organize it into sections:
+
+* 👤 Personal Information
+* 🏫 School Information
+* 📚 Subjects & Marks
+* 📄 Documents Stored
+
+Only fields with low AI confidence should be highlighted for review.
+
+The ideal experience is:
+
+```
+✓ Name
+✓ ID Number
+✓ School
+⚠ Mathematics: 85% (Please verify)
+✓ English: 78%
+✓ Physical Sciences: 81%
+
+[Confirm Passport]
+```
+
+Most students should only need to verify one or two fields.
+
+---
+
+### 3. University Planner
+
+This is where LearnBridge becomes more than an autofill tool.
+
+Imagine each university card showing:
+
+```
+University of Johannesburg
+
+✔ Passport Ready
+
+✔ Documents Complete
+
+⚠ NBT Score Missing
+
+Estimated Application Time
+
+2 minutes
+```
+
+The student instantly knows what's left to do.
+
+---
+
+### 4. Launch Application
+
+This is an excellent interaction.
+
+Instead of making the extension feel hidden, make it feel intentional.
+
+```
+[Launch Official Portal]
+
+↓
+
+University website opens
+
+↓
+
+LearnBridge panel appears
+
+↓
+
+Ready to assist
+```
+
+That reinforces that LearnBridge is helping with the process rather than replacing the university's application system.
+
+---
+
+### 5. Assisted Completion
+
+This is probably the biggest "wow" factor.
+
+Watching dozens of fields populate in seconds creates a tangible sense of automation.
+
+The overlay could show progress like:
+
+```
+LearnBridge
+
+✔ Personal Details
+
+✔ Contact Information
+
+✔ Subjects
+
+✔ Parent Details
+
+✔ Address
+
+42 fields completed
+
+Next Step
+
+Solve CAPTCHA
+
+Review your information
+
+Submit application
+```
+
+That keeps the student informed and reassures them that they're still in control.
+
+---
+
+## One feature I'd add
+
+After the application is submitted, automatically save what happened.
+
+Instead of simply marking it as complete, record:
+
+```
+University of Johannesburg
+
+Application Status
+
+✔ Submitted
+
+Date
+
+30 June 2026
+
+Reference Number
+
+UJ-2026-483920
+
+Documents Used
+
+✔ ID
+
+✔ Matric Statement
+
+✔ Proof of Residence
+```
+
+Over time, the dashboard becomes a complete application history.
+
+---
+
+## The long-term vision
+
+Once the Academic Passport exists, you can reuse it for much more than university applications:
+
+* Universities
+* TVET colleges
+* Bursary applications
+* Scholarship applications
+* Student accommodation
+* Internship programmes
+* Graduate programmes
+
+The same verified academic profile can support many different application types, increasing the value of the platform without requiring students to rebuild their information each time.
+
+Overall, this workflow feels cohesive and user-focused. The product's core value isn't simply "AI fills forms"—it's that **students create their academic information once and then reuse it wherever it's needed while remaining in control of every submission**. That's a much stronger and more durable proposition than positioning LearnBridge as just another form autofill tool.
