@@ -1,179 +1,572 @@
-I think this is the strongest version of the product you've described so far because it focuses on the **user experience**, not just the technology. It gives the student a clear feeling of progress at every step.
+Good. Now we are thinking like building a real product. I would **not start with the autofill first**. The autofill is the "magic", but it depends on everything underneath working.
 
-Here's how I would think about the flow.
+The build order should be:
 
-### 1. Build Your Academic Passport
+# PHASE 0 — Foundation (Before features)
 
-This is a great first screen.
+### 1. Project setup
 
-Instead of presenting registration forms, the user immediately gets value by uploading two documents.
+**Build:**
 
-**Goal:** "I can use this in under two minutes."
+* Frontend (web app)
+* Backend structure
+* Firebase connection
+* GitHub repo
 
----
-
-### 2. AI Extraction
-
-This is the "wow" moment.
-
-Avoid showing raw OCR output. Instead, organize it into sections:
-
-* 👤 Personal Information
-* 🏫 School Information
-* 📚 Subjects & Marks
-* 📄 Documents Stored
-
-Only fields with low AI confidence should be highlighted for review.
-
-The ideal experience is:
-
-```
-✓ Name
-✓ ID Number
-✓ School
-⚠ Mathematics: 85% (Please verify)
-✓ English: 78%
-✓ Physical Sciences: 81%
-
-[Confirm Passport]
-```
-
-Most students should only need to verify one or two fields.
+**Purpose:**
+Your foundation. Everything else plugs into this.
 
 ---
 
-### 3. University Planner
+### 2. User Authentication
 
-This is where LearnBridge becomes more than an autofill tool.
+**Build:**
 
-Imagine each university card showing:
+* Sign up
+* Login
+* Logout
+* Password reset
+* User profile
+
+Firebase:
+
+* Authentication
+
+**Purpose:**
+Every student's passport belongs to their own account.
+
+Example:
 
 ```
-University of Johannesburg
+Student A
+ └── Academic Passport
 
-✔ Passport Ready
-
-✔ Documents Complete
-
-⚠ NBT Score Missing
-
-Estimated Application Time
-
-2 minutes
+Student B
+ └── Academic Passport
 ```
-
-The student instantly knows what's left to do.
 
 ---
 
-### 4. Launch Application
+# PHASE 1 — Academic Passport (Core product)
 
-This is an excellent interaction.
+## 3. Student Dashboard
 
-Instead of making the extension feel hidden, make it feel intentional.
+**Build:**
+Main screen after login.
+
+Shows:
 
 ```
-[Launch Official Portal]
+Academic Passport
+
+Documents
+✓ ID
+✓ Matric Results
+
+Applications
+0 submitted
+
+Profile completion:
+80%
+```
+
+**Purpose:**
+The student's control center.
+
+---
+
+## 4. Document Upload System
+
+**Build:**
+Upload:
+
+* ID document
+* Matric statement
+* Other documents
+
+Firebase:
+
+* Cloud Storage
+
+**Purpose:**
+This is where the passport starts.
+
+---
+
+## 5. AI OCR Extraction
+
+**Build:**
+
+Upload image/PDF:
 
 ↓
 
-University website opens
+AI reads it
 
 ↓
 
-LearnBridge panel appears
+Extract:
 
-↓
-
-Ready to assist
+```
+Name
+ID
+School
+Subjects
+Marks
 ```
 
-That reinforces that LearnBridge is helping with the process rather than replacing the university's application system.
+Returns:
+
+```json
+{
+name:"",
+id:"",
+subjects:[]
+}
+```
+
+**Purpose:**
+Remove manual typing.
 
 ---
 
-### 5. Assisted Completion
+## 6. Verification Screen
 
-This is probably the biggest "wow" factor.
+**Build:**
 
-Watching dozens of fields populate in seconds creates a tangible sense of automation.
+Show:
 
-The overlay could show progress like:
+```
+Name:
+Paul ✓
+
+ID:
+12345 ✓
+
+Maths:
+85% ⚠
+```
+
+User edits mistakes.
+
+Button:
+
+"Save Passport"
+
+**Purpose:**
+Human confirms AI.
+
+---
+
+## 7. Academic Passport Database
+
+**Build:**
+
+Firestore structure:
+
+```
+users
+
+  userID
+
+    passport
+
+       personalInfo
+
+       academics
+
+       documents
+```
+
+**Purpose:**
+Your reusable student profile.
+
+---
+
+# PHASE 2 — Application Intelligence
+
+## 8. University/Bursary Database
+
+**Build:**
+
+Store:
+
+```
+University
+Course
+Requirements
+Application URL
+Deadline
+```
+
+Example:
+
+```
+UJ
+
+BSc Computer Science
+
+Maths: 70%
+APS: 32
+```
+
+**Purpose:**
+Know where students qualify.
+
+---
+
+## 9. Eligibility Checker
+
+**Build:**
+
+Student chooses:
+
+```
+UJ
+BSc Computer Science
+```
+
+System checks:
+
+Passport:
+
+```
+Maths 85%
+APS 38
+```
+
+Result:
+
+```
+✓ You qualify
+```
+
+or
+
+```
+✗ Maths requirement not met
+```
+
+**Purpose:**
+Big value feature.
+
+---
+
+# PHASE 3 — Browser Extension
+
+## 10. Chrome Extension
+
+Build:
+
+```
+LearnBridge Extension
+```
+
+Features:
+
+* Detect website
+* Communicate with Firebase
+* Inject data
+
+**Purpose:**
+The magic tool.
+
+---
+
+## 11. Form Scanner
+
+Extension reads:
+
+HTML:
+
+```
+<input>
+<select>
+<textarea>
+```
+
+Collects:
+
+```
+label
+name
+id
+placeholder
+```
+
+Sends to AI.
+
+**Purpose:**
+Understand the form.
+
+---
+
+## 12. AI Field Mapper
+
+AI receives:
+
+Website fields:
+
+```
+surname
+identity_no
+math_mark
+```
+
+Your passport:
+
+```
+lastName
+idNumber
+maths
+```
+
+Creates:
+
+```
+surname → lastName
+identity_no → idNumber
+```
+
+**Purpose:**
+Connect website to passport.
+
+---
+
+## 13. Autofill Engine
+
+Build:
+
+The extension inserts:
+
+```
+Paul
+123456
+85
+```
+
+into the website.
+
+**Purpose:**
+The actual product.
+
+---
+
+## 14. Review Overlay
+
+After filling:
+
+Shows:
 
 ```
 LearnBridge
 
-✔ Personal Details
+✓ 42 fields filled
 
-✔ Contact Information
-
-✔ Subjects
-
-✔ Parent Details
-
-✔ Address
-
-42 fields completed
-
-Next Step
+Please review
 
 Solve CAPTCHA
 
-Review your information
-
-Submit application
+Submit
 ```
 
-That keeps the student informed and reassures them that they're still in control.
+**Purpose:**
+Keep user in control.
 
 ---
 
-## One feature I'd add
+# PHASE 4 — Reliability
 
-After the application is submitted, automatically save what happened.
+## 15. University Mapping Storage
 
-Instead of simply marking it as complete, record:
+Save:
 
 ```
-University of Johannesburg
+UJ template
 
-Application Status
+field:
+surname
 
-✔ Submitted
-
-Date
-
-30 June 2026
-
-Reference Number
-
-UJ-2026-483920
-
-Documents Used
-
-✔ ID
-
-✔ Matric Statement
-
-✔ Proof of Residence
+maps to:
+lastName
 ```
 
-Over time, the dashboard becomes a complete application history.
+**Purpose:**
+Don't ask AI every time.
 
 ---
 
-## The long-term vision
+## 16. Change Detection
 
-Once the Academic Passport exists, you can reuse it for much more than university applications:
+System checks:
 
-* Universities
-* TVET colleges
-* Bursary applications
-* Scholarship applications
-* Student accommodation
-* Internship programmes
-* Graduate programmes
+"Did the website change?"
 
-The same verified academic profile can support many different application types, increasing the value of the platform without requiring students to rebuild their information each time.
+If yes:
 
-Overall, this workflow feels cohesive and user-focused. The product's core value isn't simply "AI fills forms"—it's that **students create their academic information once and then reuse it wherever it's needed while remaining in control of every submission**. That's a much stronger and more durable proposition than positioning LearnBridge as just another form autofill tool.
+AI reviews.
+
+**Purpose:**
+Prevent broken autofills.
+
+---
+
+## 17. Application Tracker
+
+Dashboard:
+
+```
+UJ
+Submitted ✓
+
+Wits
+In progress
+
+Bursary
+Pending
+```
+
+**Purpose:**
+Makes it a complete platform.
+
+---
+
+# PHASE 5 — Payments
+
+## 18. Subscription / Pass System
+
+Integrate:
+
+* Payments
+* Plan limits
+
+Example:
+
+Base:
+R39
+
+Plus:
+R69
+
+**Purpose:**
+Turn it into a business.
+
+---
+
+# PHASE 6 — Expansion
+
+Later:
+
+* Scholarships
+* Internships
+* Jobs
+* CV builder
+* Cover letter generator
+
+---
+
+If I were building this, I would NOT touch the extension until these work:
+
+1. Login
+2. Upload documents
+3. OCR extraction
+4. Passport saved
+5. Dashboard
+
+Because the extension without the passport is useless.
+
+Your first milestone should be:
+
+> "A student uploads an ID + results and gets a verified Academic Passport in under 2 minutes."
+
+Once that works, the autofill layer becomes the weapon.
+
+
+The **browser extension** is the part that creates the "magic" you were talking about.
+
+LearnBridge cannot directly control a university website from your normal website. The extension is what sits inside the student's browser (like a Chrome extension) and helps fill forms on external sites.
+
+Think of it like this:
+
+### Without extension:
+
+Student:
+
+LearnBridge website
+↓
+Copies information
+↓
+Goes to university website
+↓
+Manually types everything
+
+---
+
+### With extension:
+
+Student:
+
+LearnBridge website
+↓
+Builds Academic Passport
+↓
+Student opens UJ/Wits/bursary website
+↓
+Chrome extension appears
+↓
+Clicks "Fill Application"
+↓
+Extension fills the form
+
+---
+
+The extension can:
+
+* Detect that the student is on a supported application page
+* Read the form fields
+* Match fields to the student's passport
+* Insert the information
+* Show the review overlay
+
+Example:
+
+Student is on:
+
+```
+university.ac.za/apply
+```
+
+Extension sees:
+
+```
+Name: ______
+ID: ______
+Maths mark: ______
+```
+
+It fills:
+
+```
+Name: Paul
+ID: 123456
+Maths mark: 85%
+```
+
+Then it stops and tells the student:
+
+> "Review your information and submit."
+
+---
+
+The extension is **not the first thing you build** though.
+
+First build the web platform:
+
+* Account
+* Upload documents
+* OCR
+* Academic Passport
+
+Then build the extension.
+
+The extension is basically the "hands" of LearnBridge. The website is the "brain."
