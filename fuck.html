@@ -324,6 +324,204 @@
             color: var(--primary-blue);
         }
 
+                /* 100% Photo Identical Passport Layout adjustments */
+        .passport-graphic-layout {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+            height: 460px;
+            display: flex;
+            align-items: center;
+        }
+
+        .floating-docs-stack {
+            position: absolute;
+            left: -10px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            z-index: 2;
+            width: 290px;
+        }
+
+        .mini-doc-node {
+            background: rgba(255, 255, 255, 0.94);
+            border-radius: 18px;
+            padding: 14px 22px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 12px 35px rgba(200, 205, 220, 0.25);
+            border: 1px solid rgba(243, 244, 246, 0.7);
+            backdrop-filter: blur(4px);
+        }
+
+        .mini-doc-icon {
+            width: 44px;
+            height: 44px;
+            background: #ffffff;
+            color: #3b82f6;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.08);
+        }
+
+        .mini-doc-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex-grow: 1;
+        }
+
+        .mini-doc-info h5 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1e293b;
+            letter-spacing: -0.2px;
+        }
+
+        .mini-doc-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #10b981;
+            background: #f0fdf4;
+            padding: 2px 8px;
+            border-radius: 20px;
+            width: fit-content;
+        }
+
+        .mini-doc-status.blue-type {
+            color: #2563eb;
+            background: #eff6ff;
+        }
+
+        /* Decorative skeleton bars on the right side of cards */
+        .mini-doc-skeleton-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-left: auto;
+        }
+
+        .skeleton-bar {
+            width: 28px;
+            height: 4px;
+            background: #f1f5f9;
+            border-radius: 2px;
+        }
+
+        .skeleton-bar.short {
+            width: 16px;
+        }
+
+        /* 3D Realistic Booklet */
+        .passport-booklet-3d {
+            background: #ffffff;
+            width: 275px;
+            height: 395px;
+            border-radius: 6px 28px 24px 14px;
+            box-shadow: 30px 35px 65px rgba(15, 23, 42, 0.15), 
+                        inset -4px 0 10px rgba(0,0,0,0.01),
+                        inset 4px 0 6px rgba(0, 0, 0, 0.02);
+            padding: 45px 24px 35px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            position: absolute;
+            right: 0px;
+            transform: perspective(1200px) rotateY(-18deg) rotateX(7deg) rotateZ(4deg);
+            z-index: 5;
+            border: 1px solid rgba(235, 240, 245, 0.8);
+        }
+
+        /* Spine effect line */
+        .passport-booklet-3d::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 12px;
+            width: 1px;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.06);
+        }
+
+        /* Stacked 3D Inner Page rim matching image */
+        .passport-booklet-3d::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            right: -10px;
+            width: 14px;
+            height: 97%;
+            background: #ffffff;
+            border-radius: 0 6px 6px 0;
+            z-index: -1;
+            box-shadow: 3px 0 0 #3b82f6, 
+                        5px 5px 15px rgba(0,0,0,0.08), 
+                        inset 2px 0 3px rgba(0,0,0,0.05);
+        }
+
+        .passport-booklet-3d h3 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #2c5cb8;
+            margin-top: 10px;
+            font-family: 'Inter', sans-serif;
+            text-align: center;
+        }
+
+        .passport-booklet-3d h3 span {
+            color: #4b7bec;
+            font-weight: 500;
+        }
+
+        /* Shield with cap and chevron exact border curve style */
+        .passport-shield-emblem {
+            width: 110px;
+            height: 130px;
+            border: 3.5px solid #2c5cb8;
+            background: transparent;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 45%, 50% 100%, 0% 45%);
+            border-radius: 0 0 50px 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            color: #2c5cb8;
+            margin: auto 0;
+            padding-bottom: 12px;
+        }
+
+        .passport-shield-emblem i.fa-graduation-cap {
+            font-size: 2.8rem;
+            margin-top: 10px;
+        }
+
+        .passport-shield-emblem i.fa-chevron-down {
+            font-size: 1.3rem;
+            font-weight: 900;
+            margin-top: -2px;
+        }
+
+        .passport-booklet-3d p {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c5cb8;
+            letter-spacing: 1.2px;
+            line-height: 1.25;
+            max-width: 180px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
      
         /* Features Grid */
         .features-grid {
